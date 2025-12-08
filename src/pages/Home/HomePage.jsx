@@ -4,6 +4,7 @@ import Stats from './components/Stats'
 import Features from './components/Features'
 import ServicesPreview from './components/ServicesPreview'
 import DoctorsPreview from './components/DoctorsPreview'
+import Testimonials from './components/Testimonials' // Add this import
 import AppointmentCTA from './components/AppointmentCTA'
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Features />
       <ServicesPreview />
       <DoctorsPreview />
+      <Testimonials />
       <AppointmentCTA />
     </div>
   )

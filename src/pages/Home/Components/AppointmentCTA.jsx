@@ -21,13 +21,13 @@ const AppointmentCTA = () => {
   ]
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      {/* Animated Background */}
+    <section className="relative py-20 md:py-28 overflow-hidden bg-white">
+
+      <div className="absolute inset-0 bg-white" />
+      
+   
       <div className="absolute inset-0 overflow-hidden">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600" />
-        
-        {/* Floating Elements */}
+    
         <motion.div
           animate={{
             x: [0, 100, 0],
@@ -39,7 +39,7 @@ const AppointmentCTA = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
+          className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -52,24 +52,24 @@ const AppointmentCTA = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-r from-blue-400/15 to-indigo-500/15 rounded-full blur-3xl"
+          className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-r from-blue-50 to-indigo-100 rounded-full blur-3xl"
         />
         
-        {/* Animated Particles */}
+    
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={i}
             animate={{
               y: [0, -30, 0],
               x: [0, Math.sin(i) * 20, 0],
-              opacity: [0.3, 0.8, 0.3],
+              opacity: [0.1, 0.3, 0.1],
             }}
             transition={{
               duration: 3 + i * 0.3,
               repeat: Infinity,
               delay: i * 0.1,
             }}
-            className={`absolute w-1 h-1 bg-white rounded-full ${
+            className={`absolute w-1 h-1 bg-blue-200 rounded-full ${
               i % 4 === 0 ? 'top-1/4 left-1/4' :
               i % 4 === 1 ? 'top-1/3 right-1/3' :
               i % 4 === 2 ? 'bottom-1/4 left-2/3' :
@@ -80,15 +80,16 @@ const AppointmentCTA = () => {
       </div>
 
       <div className="relative container-custom px-4">
+  
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl md:rounded-[2rem] p-8 md:p-12 lg:p-16 text-white overflow-hidden border border-white/20 shadow-2xl relative"
+          className="bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600 rounded-3xl md:rounded-[2rem] p-8 md:p-12 lg:p-16 text-white overflow-hidden border border-white/20 shadow-2xl relative"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Interactive Glow Effect */}
+     
           <motion.div
             animate={{
               opacity: isHovered ? 0.6 : 0.3,
@@ -98,7 +99,7 @@ const AppointmentCTA = () => {
             className="absolute inset-0 bg-gradient-to-r from-cyan-500/30 via-blue-500/30 to-indigo-500/30 blur-3xl"
           />
           
-          {/* Top Badge */}
+         
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -116,7 +117,7 @@ const AppointmentCTA = () => {
 
           <div className="relative z-10">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              {/* Left Content */}
+             
               <div>
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
@@ -150,7 +151,7 @@ const AppointmentCTA = () => {
                   that fit your life, not the other way around.
                 </motion.p>
                 
-                {/* Benefits List */}
+             
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -179,7 +180,7 @@ const AppointmentCTA = () => {
                   ))}
                 </motion.div>
                 
-                {/* CTA Buttons */}
+             
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -217,7 +218,7 @@ const AppointmentCTA = () => {
                 </motion.div>
               </div>
 
-              {/* Right Content - Stats Grid */}
+         
               <div>
                 <div className="grid grid-cols-2 gap-4 md:gap-6">
                   {appointmentStats.map((stat, index) => {
@@ -232,7 +233,7 @@ const AppointmentCTA = () => {
                         whileHover={{ y: -5, scale: 1.05 }}
                         className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer overflow-hidden"
                       >
-                        {/* Hover Glow */}
+                       
                         <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         
                         <div className="relative z-10">
@@ -254,7 +255,7 @@ const AppointmentCTA = () => {
                           </div>
                         </div>
                         
-                        {/* Animated Corner */}
+                      
                         <motion.div
                           animate={{ rotate: [0, 90, 180, 270, 360] }}
                           transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -265,7 +266,7 @@ const AppointmentCTA = () => {
                   })}
                 </div>
                 
-                {/* Testimonial/Trust Badge */}
+         
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -295,7 +296,7 @@ const AppointmentCTA = () => {
                   </div>
                 </motion.div>
                 
-                {/* Quick Links */}
+             
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -322,7 +323,7 @@ const AppointmentCTA = () => {
               </div>
             </div>
             
-            {/* Bottom Banner */}
+    
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -362,7 +363,7 @@ const AppointmentCTA = () => {
             </motion.div>
           </div>
           
-          {/* Floating Elements */}
+    
           <motion.div
             animate={{
               y: [0, -20, 0],
