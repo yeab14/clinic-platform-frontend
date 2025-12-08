@@ -1,0 +1,68 @@
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { AuthProvider, useAuth } from './context/AuthContext'
+import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
+import HomePage from './pages/Home/HomePage'
+import ServicesPage from './pages/Services/ServicesPage'
+import DoctorsPage from './pages/Doctors/DoctorsPage'
+import AppointmentPage from './pages/Appointment/AppointmentPage'
+import ContactPage from './pages/Contact/ContactPage'
+import Login from './pages/Auth/Login'
+import Register from './pages/Auth/Register'
+import PatientDashboard from './pages/Dashboard/PatientDashboard'
+import './index.css'
+
+// Protected Route Component
+const ProtectedRoute = ({ children }) => {
+  const { user, loading } = useAuth()
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      </div>
+    )
+  }
+  
+  return user ? children : <Navigate to="/login" />
+}
+
+const AppContent = () => {
+  const { user } = useAuth()
+  
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/doctors" element={<DoctorsPage />} />
+          <Route path="/appointment" element={<AppointmentPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
+          <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <PatientDashboard />
+            </ProtectedRoute>
+          } />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+const App = () => {
+  return (
+    <Router>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </Router>
+  )
+}
+
+export default App
