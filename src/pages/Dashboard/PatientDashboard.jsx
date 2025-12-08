@@ -40,7 +40,7 @@ const PatientDashboard = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column - Profile & Stats */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Profile Card */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
