@@ -1,18 +1,15 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["./src/*"],
-        "@components/*": ["./src/components/*"],
-        "@pages/*": ["./src/pages/*"],
-        "@assets/*": ["./src/assets/*"],
-        "@utils/*": ["./src/utils/*"],
-        "@hooks/*": ["./src/hooks/*"],
-        "@context/*": ["./src/context/*"]
-      },
-      "module": "ESNext",
-      "moduleResolution": "node",
-      "allowSyntheticDefaultImports": true
-    },
-    "include": ["src/**/*"]
-  }
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@assets/*": ["src/assets/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@context/*": ["src/context/*"]
+    }
+  },
+  "include": ["src"]
+}
