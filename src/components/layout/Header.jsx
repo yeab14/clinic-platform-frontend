@@ -1,4 +1,4 @@
-// ULTRA PREMIUM HEADER – NEXT LEVEL HEALTHCARE UI
+
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <>
-      {/* ✨ Top Bar */}
+      
       <div className="w-full bg-gradient-to-r from-primary-900 to-primary-400 text-white backdrop-blur-md">
         <div className="container-custom px-6">
           <div className="flex items-center justify-between h-10">
@@ -67,7 +67,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ✨ Main Header */}
+    
       <header
         className={`sticky top-0 z-50 transition-all duration-300 bg-gradient-to-r from-primary-100 to-white backdrop-blur-xl
         ${scrolled ? "shadow-xl py-2" : "py-4"}
@@ -77,7 +77,7 @@ export default function Header() {
 
           <div className="flex items-center justify-between h-25">
 
-            {/* ✨ Logo Block */}
+      
             <Link to="/" className="flex items-center gap-4 group relative">
 
               <motion.div
@@ -86,7 +86,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05, rotate: 1 }}
                 className="relative"
               >
-                {/* Halo animation */}
+               
                 <motion.div
                   animate={{ opacity: [0.3, 0.6, 0.3] }}
                   transition={{ duration: 3, repeat: Infinity }}
@@ -100,7 +100,7 @@ export default function Header() {
                 </div>
               </motion.div>
 
-              {/* Title */}
+      
               <div>
                 <h1 className="text-3xl font-black bg-gradient-to-r from-primary-700 to-primary-900 bg-clip-text text-transparent tracking-tight">
                   ClinicCare
@@ -112,7 +112,7 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* ✨ Desktop Nav */}
+          
             <nav className="hidden lg:flex items-center gap-2">
               {navItems.map((item) => {
                 const active = location.pathname === item.path;
@@ -131,7 +131,7 @@ export default function Header() {
                   >
                     {item.label}
 
-                    {/* animated underline */}
+          
                     {active && (
                       <motion.div
                         layoutId="nav-underline"
@@ -148,7 +148,7 @@ export default function Header() {
 
            
 
-              {/* Phone */}
+      
               <div className="hidden xl:flex items-center gap-3 px-4 py-2.5 bg-gray-50 rounded-xl">
                 <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center">
                   <Phone className="w-5 h-5 text-white" />
@@ -168,7 +168,7 @@ export default function Header() {
                 Book Now
               </Link>
 
-              {/* Mobile Menu Button */}
+            
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="lg:hidden p-3 rounded-xl bg-gray-50"
@@ -178,7 +178,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* ✨ Beautiful Search Bar */}
+  
           <AnimatePresence>
             {searchOpen && (
               <motion.div
@@ -200,7 +200,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* ✨ Mobile Menu (Glass Panel) */}
+   
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
