@@ -1,6 +1,6 @@
 import React from 'react'
 import Hero from '@/pages/Home/Components/Hero'
-import Stats from '@/pages/Home/components/Stats'
+import Stats from '@/pages/Home/Components/Stats'
 import Features from '@/pages/Home/components/Features'
 import ServicesPreview from '@/pages/Home/components/ServicesPreview'
 import DoctorsPreview from '@/pages/Home/components/DoctorsPreview'
