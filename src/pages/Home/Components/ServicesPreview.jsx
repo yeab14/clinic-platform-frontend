@@ -1,14 +1,34 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Stethoscope, Tooth, Eye, Heart } from 'lucide-react'
+import { ArrowRight, Stethoscope, Eye, Heart, Activity } from 'lucide-react'
 
 const ServicesPreview = () => {
   const services = [
-    { icon: Stethoscope, name: 'General Checkup', description: 'Comprehensive health assessment', color: 'bg-blue-100 text-blue-600' },
-    { icon: Tooth, name: 'Dental Care', description: 'Complete dental solutions', color: 'bg-teal-100 text-teal-600' },
-    { icon: Eye, name: 'Eye Care', description: 'Vision correction & eye health', color: 'bg-purple-100 text-purple-600' },
-    { icon: Heart, name: 'Cardiology', description: 'Heart health & diagnostics', color: 'bg-red-100 text-red-600' },
+    { 
+      icon: Stethoscope, 
+      name: 'General Checkup', 
+      description: 'Comprehensive health assessment', 
+      color: 'bg-blue-100 text-blue-600' 
+    },
+    { 
+      icon: Activity, // Changed from Tooth
+      name: 'Dental Care', 
+      description: 'Complete dental solutions', 
+      color: 'bg-teal-100 text-teal-600' 
+    },
+    { 
+      icon: Eye, 
+      name: 'Eye Care', 
+      description: 'Vision correction & eye health', 
+      color: 'bg-purple-100 text-purple-600' 
+    },
+    { 
+      icon: Heart, 
+      name: 'Cardiology', 
+      description: 'Heart health & diagnostics', 
+      color: 'bg-red-100 text-red-600' 
+    },
   ]
 
   return (
