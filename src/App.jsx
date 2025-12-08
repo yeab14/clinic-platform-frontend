@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
@@ -13,7 +13,18 @@ import Register from './pages/Auth/Register'
 import PatientDashboard from './pages/Dashboard/PatientDashboard'
 import './index.css'
 
-// Protected Route Component
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation()
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  
+  return null
+}
+
+
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth()
   
@@ -34,7 +45,6 @@ const AppContent = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      {/* Add extra margin-top to account for larger header */}
       <main className="flex-grow mt-4">
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -44,11 +54,14 @@ const AppContent = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
-          <Route path="/dashboard" element={
-            <ProtectedRoute>
-              <PatientDashboard />
-            </ProtectedRoute>
-          } />
+          <Route 
+            path="/dashboard" 
+            element={
+              <ProtectedRoute>
+                <PatientDashboard />
+              </ProtectedRoute>
+            } 
+          />
         </Routes>
       </main>
       <Footer />
@@ -60,6 +73,7 @@ const App = () => {
   return (
     <Router>
       <AuthProvider>
+        <ScrollToTop />
         <AppContent />
       </AuthProvider>
     </Router>
