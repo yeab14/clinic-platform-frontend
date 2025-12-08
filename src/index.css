@@ -78,3 +78,147 @@
     @apply bg-primary-500;
   }
 }
+
+/* Add these to your existing index.css */
+
+/* Larger header spacing adjustments */
+.container-custom {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Add more space to sections on home page */
+section {
+  @apply py-24 lg:py-32;
+}
+
+/* Adjust spacing for content below header */
+main {
+  scroll-margin-top: 8rem; /* For anchor links to account for header height */
+}
+
+/* Make buttons larger globally */
+.btn-primary {
+  @apply px-8 py-4 text-lg font-bold;
+}
+
+.btn-secondary {
+  @apply px-8 py-4 text-lg font-bold;
+}
+
+/* Adjust card spacing */
+.card {
+  @apply p-8;
+}
+
+/* Increase form input sizes */
+.input-field {
+  @apply px-6 py-4 text-lg;
+}
+
+/* Larger typography for better readability */
+h1 {
+  @apply text-5xl lg:text-6xl;
+}
+
+h2 {
+  @apply text-4xl lg:text-5xl;
+}
+
+h3 {
+  @apply text-2xl lg:text-3xl;
+}
+
+p {
+  @apply text-lg leading-relaxed;
+}
+
+/* Improve spacing between sections */
+.space-y-section > * + * {
+  @apply mt-24;
+}
+
+/* Better line heights for readability */
+.prose {
+  @apply leading-relaxed;
+}
+
+/* Add these custom animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes text-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+}
+
+/* Apply animations */
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-text-glow {
+  animation: text-glow 2s ease-in-out infinite;
+}
+
+/* Glass effect enhancement */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient border */
+.gradient-border {
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(white, white) padding-box,
+    linear-gradient(90deg, #3b82f6, #14b8a6) border-box;
+}
+
+/* Text gradient animation */
+.animated-gradient-text {
+  background: linear-gradient(90deg, #3b82f6, #14b8a6, #8b5cf6, #3b82f6);
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Image hover effect */
+.image-hover-effect {
+  transition: transform 0.5s ease;
+}
+
+.image-hover-effect:hover {
+  transform: scale(1.02);
+}

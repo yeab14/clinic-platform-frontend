@@ -34,7 +34,8 @@ const AppContent = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow">
+      {/* Add extra margin-top to account for larger header */}
+      <main className="flex-grow mt-4">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
