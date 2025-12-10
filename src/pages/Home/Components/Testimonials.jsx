@@ -1,6 +1,22 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Star, Quote, Heart, Sparkles, ChevronLeft, ChevronRight, Award, CheckCircle, Zap, Users, TrendingUp, ThumbsUp, Shield, Award as AwardIcon } from 'lucide-react'
+import { 
+  Star, 
+  Quote, 
+  Heart, 
+  Sparkles, 
+  ChevronLeft, 
+  ChevronRight, 
+  Award, 
+  CheckCircle, 
+  Users, 
+  Shield,
+  ThumbsUp,
+  Calendar,
+  Clock,
+  BadgeCheck,
+  MessageCircle
+} from 'lucide-react'
 
 const Testimonials = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0)
@@ -11,74 +27,91 @@ const Testimonials = () => {
       id: 1,
       name: "Sarah Johnson",
       role: "Marketing Director",
+      age: "35",
+      condition: "Emergency Care",
       rating: 5,
       content: "The smart appointment system saved me hours of waiting. I was able to see a specialist in under 15 minutes during a medical emergency. The entire experience was seamless!",
       avatar: "SJ",
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-gradient-to-br from-blue-50 to-cyan-50",
-      stats: "3x faster than traditional clinics",
-      icon: Zap,
-      tags: ["Emergency", "Quick Response", "Specialist"]
+      color: "text-blue-600",
+      bgColor: "bg-blue-50",
+      treatment: "Emergency Consultation",
+      waitTime: "15 minutes",
+      date: "2 days ago"
     },
     {
       id: 2,
       name: "Dr. Michael Chen",
       role: "Cardiologist",
+      age: "42",
+      condition: "Medical Professional",
       rating: 5,
-      content: "As a doctor, I appreciate how efficiently this platform connects me with patients who need my specific expertise. The scheduling system is brilliant and reduces no-shows by 80%.",
+      content: "As a doctor, I appreciate how efficiently this platform connects me with patients who need my specific expertise. The scheduling system reduces no-shows by 80%.",
       avatar: "MC",
-      color: "from-blue-600 to-indigo-600",
-      bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
-      stats: "80% fewer no-shows",
-      icon: Users,
-      tags: ["Doctor", "Efficiency", "Technology"]
+      color: "text-cyan-600",
+      bgColor: "bg-cyan-50",
+      treatment: "Virtual Consultations",
+      waitTime: "Instant",
+      date: "1 week ago"
     },
     {
       id: 3,
       name: "Robert Davis",
       role: "Chronic Patient",
+      age: "68",
+      condition: "Diabetes Management",
       rating: 4.8,
-      content: "Managing my chronic condition became so much easier. The automated reminders, prescription refills, and virtual consultations have improved my quality of life significantly.",
+      content: "Managing my chronic condition became so much easier. The automated reminders and virtual consultations have improved my quality of life significantly.",
       avatar: "RD",
-      color: "from-cyan-500 to-blue-500",
-      bgColor: "bg-gradient-to-br from-cyan-50 to-blue-50",
-      stats: "95% medication adherence",
-      icon: Heart,
-      tags: ["Chronic Care", "Convenience", "Management"]
+      color: "text-sky-600",
+      bgColor: "bg-sky-50",
+      treatment: "Chronic Care Program",
+      waitTime: "30 minutes",
+      date: "3 days ago"
     },
     {
       id: 4,
       name: "Lisa Park",
       role: "Busy Mom",
+      age: "32",
+      condition: "Family Care",
       rating: 5,
-      content: "With three kids and a full-time job, this service has been a lifesaver. I can book appointments during lunch breaks and get prescriptions refilled without leaving work.",
+      content: "With three kids, this service has been a lifesaver. I can book appointments during lunch breaks and get prescriptions refilled without leaving work.",
       avatar: "LP",
-      color: "from-blue-500 to-indigo-500",
-      bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
-      stats: "Saved 12 hours monthly",
-      icon: TrendingUp,
-      tags: ["Family", "Convenience", "Time-saving"]
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-50",
+      treatment: "Family Wellness",
+      waitTime: "20 minutes",
+      date: "5 days ago"
     },
     {
       id: 5,
       name: "David Wilson",
       role: "Senior Patient",
+      age: "72",
+      condition: "Regular Checkups",
       rating: 4.9,
-      content: "The interface is so simple even for someone like me who isn't tech-savvy. The video calls are crystal clear and I feel truly cared for by the medical team.",
+      content: "The interface is so simple even for someone like me who isn't tech-savvy. The video calls are crystal clear and I feel truly cared for.",
       avatar: "DW",
-      color: "from-blue-600 to-cyan-600",
-      bgColor: "bg-gradient-to-br from-blue-50 to-cyan-50",
-      stats: "99% satisfaction rate",
-      icon: Shield,
-      tags: ["Senior Friendly", "Easy to Use", "Quality Care"]
+      color: "text-blue-500",
+      bgColor: "bg-blue-50",
+      treatment: "Senior Care Plan",
+      waitTime: "25 minutes",
+      date: "1 week ago"
     }
   ]
 
   const stats = [
-    { value: "4.9/5", label: "Average Rating", icon: Star, color: "text-blue-500" },
-    { value: "10K+", label: "Happy Patients", icon: Heart, color: "text-blue-500" },
-    { value: "98%", label: "Would Recommend", icon: ThumbsUp, color: "text-blue-500" },
-    { value: "50+", label: "Awards", icon: Award, color: "text-blue-500" }
+    { value: "4.9/5", label: "Patient Rating", icon: Star, color: "bg-blue-50 text-blue-600" },
+    { value: "10K+", label: "Patients Served", icon: Users, color: "bg-cyan-50 text-cyan-600" },
+    { value: "98%", label: "Satisfaction", icon: ThumbsUp, color: "bg-sky-50 text-sky-600" },
+    { value: "24/7", label: "Support", icon: Clock, color: "bg-indigo-50 text-indigo-600" }
+  ]
+
+  const benefits = [
+    { icon: Calendar, text: "Same-day Appointments", color: "text-blue-600 bg-blue-50" },
+    { icon: Clock, text: "Minimal Waiting Time", color: "text-cyan-600 bg-cyan-50" },
+    { icon: BadgeCheck, text: "Verified Specialists", color: "text-sky-600 bg-sky-50" },
+    { icon: Shield, text: "Secure & Private", color: "text-indigo-600 bg-indigo-50" }
   ]
 
   const nextTestimonial = () => {
@@ -90,303 +123,248 @@ const Testimonials = () => {
   }
 
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-white via-blue-50/20 to-white">
+    <section className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-white to-blue-50/30">
+      {/* Subtle Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            y: [0, -30, 0],
-            rotate: [0, 5, 0],
-            opacity: [0.3, 0.6, 0.3]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/4 left-10 w-16 h-16 text-blue-200/20"
-        >
-          <Quote className="w-full h-full rotate-12" />
-        </motion.div>
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-100/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-cyan-100/10 rounded-full blur-3xl" />
         
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            rotate: [0, -10, 0],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-          className="absolute bottom-1/3 right-12 w-20 h-20 text-blue-200/15"
-        >
-          <Quote className="w-full h-full -rotate-12" />
-        </motion.div>
-
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/5 to-cyan-400/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-tr from-blue-500/3 to-indigo-500/3 rounded-full blur-3xl" />
-        
-        {Array.from({ length: 15 }).map((_, i) => (
+        {/* Subtle floating dots */}
+        {Array.from({ length: 8 }).map((_, i) => (
           <motion.div
             key={i}
             animate={{
-              y: [0, -40, 0],
-              x: [0, Math.sin(i) * 20, 0],
-              opacity: [0.1, 0.4, 0.1],
-              scale: [1, 1.5, 1]
+              y: [0, -30, 0],
+              x: [0, 20, 0],
+              opacity: [0.1, 0.3, 0.1]
             }}
             transition={{
-              duration: 4 + i * 0.5,
+              duration: 6 + i,
               repeat: Infinity,
-              delay: i * 0.2,
-              ease: "easeInOut"
+              delay: i * 0.5
             }}
-            className={`absolute w-1 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full ${
-              i % 5 === 0 ? 'top-1/5 left-1/4' :
-              i % 5 === 1 ? 'top-2/3 right-1/3' :
-              i % 5 === 2 ? 'bottom-1/4 left-1/3' :
-              i % 5 === 3 ? 'top-1/3 right-1/4' :
-              'bottom-2/3 left-2/3'
-            }`}
+            className="absolute w-2 h-2 bg-blue-300/30 rounded-full"
+            style={{
+              left: `${15 + i * 10}%`,
+              top: `${20 + i * 8}%`
+            }}
           />
         ))}
       </div>
 
-      <div className="relative container-custom px-4">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full mb-6 shadow-sm">
-            <Sparkles className="w-4 h-4 text-blue-600 animate-pulse" />
-            <span className="text-sm font-medium text-blue-700">Trusted by Thousands</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-6">
+            <Sparkles className="w-4 h-4 text-blue-600" />
+            <span className="text-sm font-medium text-blue-700">Patient Stories</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            <span className="text-gray-900">Real Stories,</span>{' '}
-            <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                Real Impact
+            Trusted by{' '}
+            <span className="relative">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+                Thousands of Patients
               </span>
               <motion.div
-                animate={{ width: ["0%", "100%", "0%"] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="absolute -bottom-2 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500"
               />
             </span>
           </h2>
           
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
-            Join thousands of satisfied patients and doctors who have transformed their healthcare experience 
-            with our intelligent platform.
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Hear from patients and doctors who have experienced our comprehensive healthcare services.
           </p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12"
-          >
-            {stats.map((stat, index) => {
-              const Icon = stat.icon
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-lg transition-all"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
-                      <div className="text-sm text-gray-600">{stat.label}</div>
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </motion.div>
         </motion.div>
 
-        <div className="relative">
-          <div className="relative mb-12">
-            <AnimatePresence mode="wait">
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto"
+        >
+          {stats.map((stat, index) => {
+            const Icon = stat.icon
+            return (
               <motion.div
-                key={activeTestimonial}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="relative"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center p-6 rounded-2xl bg-white border border-gray-100 hover:border-blue-200 transition-colors"
               >
-                <div className={`${testimonials[activeTestimonial].bgColor} rounded-3xl md:rounded-[2rem] p-8 md:p-12 border border-gray-200 shadow-2xl overflow-hidden`}>
-                  <motion.div
-                    animate={{
-                      opacity: isHovered ? 0.6 : 0.3,
-                      scale: isHovered ? 1.1 : 1,
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className={`absolute inset-0 bg-gradient-to-r ${testimonials[activeTestimonial].color} opacity-30 blur-3xl`}
-                  />
-                  
-                  <div className="relative z-10">
-                    <div className="flex flex-col lg:flex-row gap-8 items-center">
-                      <div className="lg:w-1/4">
-                        <motion.div
-                          animate={{ rotate: [0, 5, 0, -5, 0] }}
-                          transition={{ duration: 8, repeat: Infinity }}
-                          className="relative"
-                        >
-                          <div className={`w-32 h-32 bg-gradient-to-br ${testimonials[activeTestimonial].color} rounded-3xl flex items-center justify-center mb-4 mx-auto shadow-2xl`}>
-                            <div className="text-4xl font-bold text-white">
-                              {testimonials[activeTestimonial].avatar}
-                            </div>
-                            
-                            <motion.div
-                              animate={{ 
-                                y: [0, -10, 0],
-                                rotate: [0, 10, 0]
-                              }}
-                              transition={{ duration: 4, repeat: Infinity }}
-                              className="absolute -top-2 -right-2 w-12 h-12 bg-gradient-to-br from-white to-gray-100 rounded-full flex items-center justify-center shadow-lg border border-gray-200"
-                            >
-                              <Quote className="w-5 h-5 text-blue-500" />
-                            </motion.div>
-                          </div>
-                          
-                          <div className="flex justify-center gap-1 mb-4">
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${stat.color.split(' ')[0]} mb-4`}>
+                  <Icon className="w-6 h-6" />
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
+              </motion.div>
+            )
+          })}
+        </motion.div>
+
+        {/* Main Testimonial Carousel */}
+        <div className="relative mb-16 max-w-6xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTestimonial}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              className="relative"
+            >
+              <div className="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-sm">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Patient Info Sidebar */}
+                  <div className="lg:w-1/3">
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border border-blue-100">
+                      <div className="flex items-start gap-4 mb-6">
+                        <div className={`w-20 h-20 rounded-2xl ${testimonials[activeTestimonial].bgColor} flex items-center justify-center`}>
+                          <span className="text-2xl font-bold text-gray-900">{testimonials[activeTestimonial].avatar}</span>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-900">{testimonials[activeTestimonial].name}</h3>
+                          <p className="text-gray-600">{testimonials[activeTestimonial].role}</p>
+                          <div className="flex items-center gap-1 mt-2">
                             {[...Array(5)].map((_, i) => (
-                              <motion.div
-                                key={i}
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ delay: i * 0.1 }}
-                                whileHover={{ scale: 1.2, rotate: 360 }}
-                              
-                              >
-                                <Star className="w-6 h-6 text-blue-400 fill-current" />
-                              </motion.div>
+                              <Star key={i} className="w-4 h-4 text-blue-400 fill-current" />
                             ))}
+                            <span className="text-sm text-gray-500 ml-2">{testimonials[activeTestimonial].rating}/5</span>
                           </div>
-                          
-                          <div className="text-center">
-                            <div className="text-2xl font-bold text-gray-900">
-                              {testimonials[activeTestimonial].name}
-                            </div>
-                            <div className="text-gray-600">
-                              {testimonials[activeTestimonial].role}
-                            </div>
-                          </div>
-                        </motion.div>
+                        </div>
                       </div>
                       
-                      <div className="lg:w-3/4">
-                        <Quote className="w-12 h-12 text-blue-300 mb-4" />
-                        
-                        <motion.p
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 0.2 }}
-                          className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-relaxed"
-                        >
-                          "{testimonials[activeTestimonial].content}"
-                        </motion.p>
-                        
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {testimonials[activeTestimonial].tags.map((tag, index) => (
-                            <motion.span
-                              key={index}
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: 0.3 + index * 0.1 }}
-                              className={`px-4 py-1.5 bg-gradient-to-r ${testimonials[activeTestimonial].color} bg-opacity-10 text-gray-700 rounded-full text-sm font-medium border border-opacity-20`}
-                            >
-                              {tag}
-                            </motion.span>
-                          ))}
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <Heart className="w-4 h-4 text-blue-600" />
+                          </div>
+                          <div>
+                            <div className="text-sm text-gray-500">Condition</div>
+                            <div className="font-medium text-gray-900">{testimonials[activeTestimonial].condition}</div>
+                          </div>
                         </div>
                         
-                        <motion.div
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.5 }}
-                          className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-2xl shadow-lg border border-gray-100"
-                        >
-                          {(() => {
-                            const Icon = testimonials[activeTestimonial].icon
-                            return (
-                              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${testimonials[activeTestimonial].color} flex items-center justify-center`}>
-                                <Icon className="w-5 h-5 text-white" />
-                              </div>
-                            )
-                          })()}
-                          <div>
-                            <div className="text-lg font-bold text-gray-900">
-                              {testimonials[activeTestimonial].stats}
-                            </div>
-                            <div className="text-sm text-gray-600">Based on user experience</div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center">
+                            <Clock className="w-4 h-4 text-cyan-600" />
                           </div>
-                        </motion.div>
+                          <div>
+                            <div className="text-sm text-gray-500">Wait Time</div>
+                            <div className="font-medium text-gray-900">{testimonials[activeTestimonial].waitTime}</div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center">
+                            <Calendar className="w-4 h-4 text-sky-600" />
+                          </div>
+                          <div>
+                            <div className="text-sm text-gray-500">Treatment</div>
+                            <div className="font-medium text-gray-900">{testimonials[activeTestimonial].treatment}</div>
+                          </div>
+                        </div>
                       </div>
+                    </div>
+                  </div>
+                  
+                  {/* Testimonial Content */}
+                  <div className="lg:w-2/3">
+                    <div className="mb-8">
+                      <Quote className="w-12 h-12 text-blue-200 mb-4" />
+                      <p className="text-2xl md:text-3xl font-medium text-gray-900 leading-relaxed mb-6">
+                        "{testimonials[activeTestimonial].content}"
+                      </p>
+                      <div className="text-sm text-gray-500">Posted {testimonials[activeTestimonial].date}</div>
+                    </div>
+                    
+                    {/* Benefits Highlight */}
+                    <div className="grid grid-cols-2 gap-3">
+                      {benefits.map((benefit, index) => {
+                        const Icon = benefit.icon
+                        return (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 + index * 0.1 }}
+                            className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl border border-gray-100"
+                          >
+                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${benefit.color.split(' ')[1]}`}>
+                              <Icon className={`w-5 h-5 ${benefit.color.split(' ')[0]}`} />
+                            </div>
+                            <span className="text-sm font-medium text-gray-700">{benefit.text}</span>
+                          </motion.div>
+                        )
+                      })}
                     </div>
                   </div>
                 </div>
-                
+              </div>
+              
+              {/* Navigation Buttons */}
+              <div className="flex justify-center gap-4 mt-8">
                 <motion.button
-                  whileHover={{ scale: 1.1, x: -5 }}
+                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={prevTestimonial}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-xl border border-gray-200 flex items-center justify-center hover:shadow-2xl transition-all z-20"
+                  className="w-12 h-12 bg-white rounded-full border border-gray-200 flex items-center justify-center hover:border-blue-300 transition-colors"
                 >
-                  <ChevronLeft className="w-6 h-6 text-gray-700" />
+                  <ChevronLeft className="w-5 h-5 text-gray-700" />
                 </motion.button>
                 
+                <div className="flex items-center gap-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveTestimonial(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === activeTestimonial 
+                          ? 'w-8 bg-gradient-to-r from-blue-500 to-cyan-500' 
+                          : 'bg-gray-300 hover:bg-gray-400'
+                      }`}
+                    />
+                  ))}
+                </div>
+                
                 <motion.button
-                  whileHover={{ scale: 1.1, x: 5 }}
+                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={nextTestimonial}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-xl border border-gray-200 flex items-center justify-center hover:shadow-2xl transition-all z-20"
+                  className="w-12 h-12 bg-white rounded-full border border-gray-200 flex items-center justify-center hover:border-blue-300 transition-colors"
                 >
-                  <ChevronRight className="w-6 h-6 text-gray-700" />
+                  <ChevronRight className="w-5 h-5 text-gray-700" />
                 </motion.button>
-              </motion.div>
-            </AnimatePresence>
-            
-            <div className="flex justify-center gap-2 mt-8">
-              {testimonials.map((_, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => setActiveTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === activeTestimonial 
-                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 w-8' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                />
-              ))}
-            </div>
-          </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
+        {/* More Testimonials Grid */}
+        <div className="mb-16">
+          <div className="flex items-center justify-between mb-8">
+            <h3 className="text-2xl font-bold text-gray-900">More Patient Stories</h3>
+            <button className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2">
+              View all stories
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.slice(0, 3).map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
@@ -394,112 +372,114 @@ const Testimonials = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
+                whileHover={{ y: -5 }}
                 onClick={() => setActiveTestimonial(index)}
-                className="group bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer relative overflow-hidden"
+                className="group bg-white rounded-2xl p-6 border border-gray-100 hover:border-blue-200 transition-all cursor-pointer"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-xl ${testimonial.bgColor} flex items-center justify-center`}>
+                      <span className="font-bold text-gray-900">{testimonial.avatar}</span>
+                    </div>
+                    <div>
+                      <div className="font-bold text-gray-900">{testimonial.name}</div>
+                      <div className="text-sm text-gray-600">{testimonial.role} • {testimonial.age}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4 text-blue-400 fill-current" />
+                    <span className="text-sm font-medium">{testimonial.rating}</span>
+                  </div>
+                </div>
                 
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${testimonial.color} flex items-center justify-center`}>
-                        <div className="text-white font-bold">
-                          {testimonial.avatar}
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-bold text-gray-900">{testimonial.name}</div>
-                        <div className="text-sm text-gray-600">{testimonial.role}</div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-blue-400 fill-current" />
-                      ))}
-                    </div>
+                <p className="text-gray-700 mb-4 line-clamp-3">"{testimonial.content.substring(0, 120)}..."</p>
+                
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <Clock className="w-4 h-4" />
+                    {testimonial.waitTime}
                   </div>
-                  
-                  <p className="text-gray-700 line-clamp-3 mb-4">
-                    "{testimonial.content.substring(0, 120)}..."
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {testimonial.tags.slice(0, 2).map((tag, tagIndex) => (
-                      <span key={tagIndex} className="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-600">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <motion.div
-                    animate={{ x: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="inline-flex items-center gap-1 text-blue-600 text-sm font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    <span>Read full story</span>
+                  <div className="flex items-center gap-2 text-blue-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    Read full
                     <ChevronRight className="w-4 h-4" />
-                  </motion.div>
+                  </div>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12 pt-12 border-t border-gray-100"
-          >
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
-                    <AwardIcon className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900">Trusted Worldwide</div>
-                    <div className="text-gray-600">Industry-recognized excellence</div>
-                  </div>
+        {/* Trust Badges */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-3xl p-8 md:p-12 border border-blue-100"
+        >
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-center md:text-left">
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-white rounded-full mb-4">
+                <Shield className="w-5 h-5 text-blue-600" />
+                <span className="font-medium text-blue-700">100% Secure & Trusted</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Your Health is Our Priority</h3>
+              <p className="text-gray-600">Certified professionals and secure technology for your peace of mind.</p>
+            </div>
+            
+            <div className="flex flex-wrap gap-4">
+              <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <BadgeCheck className="w-5 h-5 text-blue-600" />
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900">Verified Doctors</div>
+                  <div className="text-sm text-gray-600">Board-certified</div>
                 </div>
               </div>
               
-              <div className="flex flex-wrap gap-6">
-                {[
-                  { label: "HIPAA Compliant", icon: Shield },
-                  { label: "24/7 Support", icon: Zap },
-                  { label: "Verified Doctors", icon: CheckCircle },
-                ].map((badge, index) => {
-                  const Icon = badge.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.05 }}
-                      className="flex items-center gap-3 px-4 py-3 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-100"
-                    >
-                      <Icon className="w-5 h-5 text-blue-600" />
-                      <span className="text-sm font-medium text-blue-700">{badge.label}</span>
-                    </motion.div>
-                  )
-                })}
+              <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl">
+                <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
+                  <CheckCircle className="w-5 h-5 text-cyan-600" />
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900">HIPAA Compliant</div>
+                  <div className="text-sm text-gray-600">Secure data</div>
+                </div>
               </div>
               
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="inline-flex items-center gap-2 text-blue-600 font-medium cursor-pointer group"
-              >
-                <span>View all testimonials</span>
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                </motion.div>
-              </motion.div>
+              <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl">
+                <div className="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-sky-600" />
+                </div>
+                <div>
+                  <div className="font-medium text-gray-900">24/7 Support</div>
+                  <div className="text-sm text-gray-600">Always available</div>
+                </div>
+              </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Experience Better Healthcare?</h3>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Join thousands of satisfied patients who trust us with their health and wellness.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-full font-medium hover:opacity-90 transition-opacity">
+              Book an Appointment
+            </button>
+            <button className="px-8 py-3 bg-white text-blue-600 border border-blue-200 rounded-full font-medium hover:bg-blue-50 transition-colors">
+              View All Testimonials
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
