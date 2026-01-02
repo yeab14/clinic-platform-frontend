@@ -1,4 +1,4 @@
-// Updated to focus on Dr. Redwan Seid Busery
+// Updated locale file with stats section
 export const LANGUAGES = {
     en: {
       code: 'en',
@@ -7,9 +7,9 @@ export const LANGUAGES = {
       direction: 'ltr',
       nav: {
         home: "Home",
+        about: "About",
         services: "Services",
-        doctors: "Doctors",
-        appointment: "Appointment",
+        education: "Education",
         contact: "Contact"
       }
     },
@@ -20,9 +20,9 @@ export const LANGUAGES = {
       direction: 'ltr',
       nav: {
         home: "Ana Sayfa",
+        about: "Hakkımda",
         services: "Hizmetler",
-        doctors: "Doktorlar",
-        appointment: "Randevu",
+        education: "Eğitim",
         contact: "İletişim"
       }
     }
@@ -97,6 +97,112 @@ export const LANGUAGES = {
           { value: "Uluslar.", label: "Kılavuzlar" }
         ],
         scrollHint: "Kapsamlı Bakımı Keşfedin"
+      }
+    },
+  
+    about: {
+      en: {
+        title: "About Me",
+        subtitle: "Cardiology Specialist",
+        paragraphs: [
+          "I am a cardiologist providing comprehensive care for patients with a wide range of cardiovascular conditions. My clinical practice focuses on accurate diagnosis, individualized treatment planning, and long-term follow-up based on current scientific evidence and international guidelines.",
+          "I manage cardiovascular diseases across different stages, from early detection and risk evaluation to treatment optimization and continuity of care. When advanced diagnostic or therapeutic procedures are required, I coordinate patient care in collaboration with specialized centers to ensure safe, timely, and integrated management.",
+          "I place strong emphasis on clear communication, shared decision-making, and a holistic approach that considers both medical findings and individual patient needs."
+        ]
+      },
+      tr: {
+        title: "Hakkımda",
+        subtitle: "Kardiyoloji Uzmanı",
+        paragraphs: [
+          "Geniş bir yelpazedeki kardiyovasküler hastalıklara sahip hastalara kapsamlı kardiyoloji hizmeti sunan bir kardiyoloğum. Klinik pratiğim; doğru tanı, kişiye özel tedavi planlaması ve güncel bilimsel veriler ile uluslararası kılavuzlara dayalı uzun dönem takibi esas almaktadır.",
+          "Kardiyovasküler hastalıkların erken tanı ve risk değerlendirmesinden tedavi optimizasyonuna ve bakım sürekliliğine kadar tüm aşamalarını yönetmekteyim. İleri tanısal veya tedavi edici işlemler gerektiğinde, güvenli, zamanında ve entegre hasta yönetimi sağlamak amacıyla uzman merkezlerle iş birliği içinde koordinasyon sağlamaktayım.",
+          "Hasta-hekim iletişimi, ortak karar alma ve bireysel hasta ihtiyaçlarını gözeten bütüncül bir yaklaşım benim için önceliklidir."
+        ]
+      }
+    },
+  
+    stats: {
+      en: {
+        title: "Excellence in Cardiology",
+        subtitle: "Professional Achievements",
+        stats: [
+          { 
+            value: "1,000+", 
+            label: "Trusted Patients", 
+            description: "Successfully treated with comprehensive care"
+          },
+          { 
+            value: "98%", 
+            label: "Satisfaction Rate", 
+            description: "Patient satisfaction and positive outcomes"
+          },
+          { 
+            value: "30 min", 
+            label: "Detailed Consultation", 
+            description: "Average comprehensive examination time"
+          },
+          { 
+            value: "10+", 
+            label: "Publications", 
+            description: "Scientific contributions to cardiology"
+          }
+        ],
+        expertise: [
+          "Cardiac Diagnosis",
+          "Risk Assessment",
+          "Treatment Optimization",
+          "Preventive Care"
+        ],
+        comparisonTitle: "Higher Recovery Rates",
+        comparisonDescription: "Our evidence-based approach results in significantly improved patient outcomes compared to industry standards.",
+        comparisonOurClinic: "Our Approach",
+        comparisonIndustry: "Industry Average",
+        memberships: [
+          "Turkish Society of Cardiology",
+          "Turkish Medical Association",
+          "TKD Interventional Cardiology"
+        ]
+      },
+      tr: {
+        title: "Kardiyolojide Mükemmellik",
+        subtitle: "Profesyonel Başarılar",
+        stats: [
+          { 
+            value: "1.000+", 
+            label: "Güvenilen Hasta", 
+            description: "Kapsamlı bakımla başarıyla tedavi edildi"
+          },
+          { 
+            value: "%98", 
+            label: "Memnuniyet Oranı", 
+            description: "Hasta memnuniyeti ve olumlu sonuçlar"
+          },
+          { 
+            value: "30 dk", 
+            label: "Detaylı Muayene", 
+            description: "Ortalama kapsamlı muayene süresi"
+          },
+          { 
+            value: "10+", 
+            label: "Yayın", 
+            description: "Kardiyolojiye bilimsel katkılar"
+          }
+        ],
+        expertise: [
+          "Kardiyak Teşhis",
+          "Risk Değerlendirmesi",
+          "Tedavi Optimizasyonu",
+          "Önleyici Bakım"
+        ],
+        comparisonTitle: "Daha Yüksek İyileşme Oranları",
+        comparisonDescription: "Kanıta dayalı yaklaşımımız, sektör standartlarına kıyasla önemli ölçüde gelişmiş hasta sonuçları sağlar.",
+        comparisonOurClinic: "Bizim Yaklaşımımız",
+        comparisonIndustry: "Sektör Ortalaması",
+        memberships: [
+          "Türk Kardiyoloji Derneği",
+          "Türk Tabipleri Birliği",
+          "TKD Girişimsel Kardiyoloji"
+        ]
       }
     },
   
