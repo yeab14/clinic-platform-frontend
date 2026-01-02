@@ -1,4 +1,4 @@
-// Supported languages
+// Updated to focus on Dr. Redwan Seid Busery
 export const LANGUAGES = {
     en: {
       code: 'en',
@@ -28,86 +28,85 @@ export const LANGUAGES = {
     }
   };
   
-  // Language content
   export const CONTENT = {
     hero: {
       en: {
-        titleLine1: "Healthcare That",
-        titleHighlight: "Cares About You",
-        description: "Experience next-generation healthcare with our intelligent platform. Book appointments in seconds, connect with top specialists, and manage your health journey seamlessly.",
+        titleLine1: "Dr. Redwan Seid Busery",
+        titleHighlight: "Cardiology Specialist",
+        description: "Providing comprehensive cardiology care, from diagnosis and treatment planning to long-term follow-up, based on current scientific evidence and international guidelines.",
         trustBadge: {
-          title: "Trusted Healthcare",
-          subtitle: "Since 2010"
+          title: "Board Certified Cardiologist",
+          subtitle: "Since 2018"
         },
         features: [
-          "AI-Powered Appointment System",
-          "24/7 Telemedicine Support",
-          "Same-Day Appointments",
-          "No Paperwork Required"
+          "Personalized Treatment Plans",
+          "Advanced Cardiac Diagnostics",
+          "International Guideline-Based Care",
+          "Comprehensive Follow-up"
         ],
         cta: {
-          primary: "Book Appointment",
-          secondary: "Watch Demo"
+          primary: "Book Consultation",
+          secondary: "View Services"
         },
         stats: {
-          doctors: "Doctors",
-          available: "Available Now",
-          wait: "Average Wait"
+          doctors: "Specialist",
+          available: "Consulting Hours",
+          wait: "Response Time"
         },
         doctorCard: {
-          name: "Dr. Sarah Johnson",
-          availability: "Available Today"
+          name: "Dr. Redwan Seid Busery",
+          availability: "Accepting New Patients"
         },
         miniStats: [
-          { value: "24/7", label: "Online Support" },
-          { value: "98%", label: "Accuracy" },
-          { value: "AI", label: "Powered" }
+          { value: "Cardiology", label: "Specialization" },
+          { value: "Evidence", label: "Based Care" },
+          { value: "Int'l", label: "Guidelines" }
         ],
-        scrollHint: "Scroll to explore"
+        scrollHint: "Discover Comprehensive Care"
       },
       tr: {
-        titleLine1: "Sizi Önemseyen",
-        titleHighlight: "Sağlık Hizmeti",
-        description: "Akıllı platformumuzla yeni nesil sağlık hizmetini deneyimleyin. Saniyeler içinde randevu alın, uzman doktorlarla bağlanın ve sağlık yolculuğunuzu sorunsuz yönetin.",
+        titleLine1: "Dr. Redwan Seid Busery",
+        titleHighlight: "Kardiyoloji Uzmanı",
+        description: "Tanıdan tedavi planlamasına ve uzun dönem takibe kadar, güncel bilimsel veriler ve uluslararası kılavuzlar doğrultusunda kapsamlı kardiyoloji hizmeti sunmaktadır.",
         trustBadge: {
-          title: "Güvenilir Sağlık Hizmeti",
-          subtitle: "2010'dan Beri"
+          title: "Uzman Kardiyolog",
+          subtitle: "2018'den Beri"
         },
         features: [
-          "Yapay Zeka Destekli Randevu Sistemi",
-          "7/24 Tele-Tıp Desteği",
-          "Aynı Gün Randevu",
-          "Kağıt İşlemi Yok"
+          "Kişiselleştirilmiş Tedavi Planları",
+          "Gelişmiş Kardiyak Teşhis",
+          "Uluslararası Kılavuz Tabanlı Bakım",
+          "Kapsamlı Takip"
         ],
         cta: {
           primary: "Randevu Al",
-          secondary: "Demoyu İzle"
+          secondary: "Hizmetleri Gör"
         },
         stats: {
-          doctors: "Doktor",
-          available: "Şu Anda Müsait",
-          wait: "Ortalama Bekleme"
+          doctors: "Uzman",
+          available: "Muayene Saatleri",
+          wait: "Yanıt Süresi"
         },
         doctorCard: {
-          name: "Dr. Sarah Johnson",
-          availability: "Bugün Müsait"
+          name: "Dr. Redwan Seid Busery",
+          availability: "Yeni Hasta Kabul Ediyor"
         },
         miniStats: [
-          { value: "7/24", label: "Çevrimiçi Destek" },
-          { value: "%98", label: "Doğruluk" },
-          { value: "YZ", label: "Destekli" }
+          { value: "Kardiyoloji", label: "Uzmanlık" },
+          { value: "Kanıta", label: "Dayalı Bakım" },
+          { value: "Uluslar.", label: "Kılavuzlar" }
         ],
-        scrollHint: "Keşfetmek için kaydırın"
+        scrollHint: "Kapsamlı Bakımı Keşfedin"
       }
     },
   
     common: {
       en: {
-        logoSubtitle: "Premium Healthcare",
+        logoSubtitle: "Cardiology Excellence",
         bookNow: "Book Now",
         emergency: "Emergency",
         openHours: "Mon - Sat: 8AM - 8PM",
-        address: "Çavuşoğlu Mahallesi (neighborhood) of Kartal district, on the Asian side of Istanbul",
+        address: "Çavuşoğlu Mahallesi, Kartal, Istanbul",
         searchPlaceholder: "Search doctors, services, symptoms...",
         selectLanguage: "Select Language",
         languageDescription: "Choose your preferred language",
@@ -118,11 +117,11 @@ export const LANGUAGES = {
         }
       },
       tr: {
-        logoSubtitle: "Premium Sağlık Hizmeti",
+        logoSubtitle: "Kardiyoloji Mükemmelliği",
         bookNow: "Hemen Randevu Al",
         emergency: "Acil",
         openHours: "Pzt - Cmt: 08:00 - 20:00",
-        address: "Çavuşoğlu Mahallesi (neighborhood) of Kartal district, on the Asian side of Istanbul",
+        address: "Çavuşoğlu Mahallesi, Kartal, İstanbul",
         searchPlaceholder: "Doktor, hizmet, semptom ara...",
         selectLanguage: "Dil Seçin",
         languageDescription: "Tercih ettiğiniz dili seçin",
