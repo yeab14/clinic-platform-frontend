@@ -11,14 +11,13 @@ import {
   Calendar,
   ChevronRight,
   Clock,
+  Heart,
   MapPin,
   Menu,
   Phone,
   Shield,
-  Sparkles,
-  Heart,
+  Stethoscope,
   X,
-  Stethoscope
 } from 'lucide-react';
 import {
   Link,
@@ -32,9 +31,45 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const { getCommon, getNavItems } = useLocale();
+  const { language } = useLocale();
+  const navItems = [
+    { 
+      path: '/', 
+      label: language === 'tr' ? 'Ana Sayfa' : 'Home' 
+    },
+    { 
+      path: '/about', 
+      label: language === 'tr' ? 'Hakkımda' : 'About' 
+    },
+    { 
+      path: '/services', 
+      label: language === 'tr' ? 'Hizmetler' : 'Services' 
+    },
+    { 
+      path: '/appointment', 
+      label: language === 'tr' ? 'randevu' : 'Appointment' 
+    },
+    { 
+      path: '/contact', 
+      label: language === 'tr' ? 'İletişim' : 'Contact' 
+    }
+  ];
 
-  const navItems = getNavItems();
+
+  const getCommon = (key) => {
+  const commons = {
+    openHours: 'Mon-Fri: 8AM-8PM',
+    address: 'Kartal, İstanbul',
+    Whatsapp: 'WhatsApp',
+    logoSubtitle: 'Cardiology Specialist',
+    bookNow: 'Book Now',
+    emergency: 'Emergency',
+  };
+  return commons[key] || key;
+};
+
+  
+
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 30);

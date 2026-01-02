@@ -1,4 +1,4 @@
-// Updated locale.js with contact section
+
 export const LANGUAGES = {
     en: {
       code: 'en',
@@ -9,7 +9,8 @@ export const LANGUAGES = {
         home: "Home",
         about: "About",
         services: "Services",
-        education: "Education",
+        doctors: 'Doctors',
+        appointment: "Appointment",
         contact: "Contact"
       }
     },
@@ -22,7 +23,8 @@ export const LANGUAGES = {
         home: "Ana Sayfa",
         about: "Hakkımda",
         services: "Hizmetler",
-        education: "Eğitim",
+        doctors: 'doktorlar',
+        appointment: "randevu",
         contact: "İletişim"
       }
     }

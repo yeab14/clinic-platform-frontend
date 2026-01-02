@@ -1,18 +1,30 @@
-import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { AuthProvider, useAuth } from './context/AuthContext'
-import Header from './components/layout/Header'
-import Footer from './components/layout/Footer'
-import HomePage from './pages/Home/HomePage'
-import ServicesPage from './pages/Services/ServicesPage'
-import DoctorsPage from './pages/Doctors/DoctorsPage'
-import AppointmentPage from './pages/Appointment/AppointmentPage'
-import ContactPage from './pages/Contact/ContactPage'
-import Login from './pages/Auth/Login'
-import Register from './pages/Auth/Register'
-import PatientDashboard from './pages/Dashboard/PatientDashboard'
-import './index.css'
+import './index.css';
 
+import React, { useEffect } from 'react';
+
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
+
+import Footer from './components/layout/Footer';
+import Header from './components/layout/Header';
+import {
+  AuthProvider,
+  useAuth,
+} from './context/AuthContext';
+import AppointmentPage from './pages/Appointment/AppointmentPage';
+import Register from './pages/Auth/Register';
+import Login from './pages/Auth/Login';
+import ContactPage from './pages/Contact/ContactPage';
+import PatientDashboard from './pages/Dashboard/PatientDashboard';
+import DoctorsPage from './pages/Doctors/DoctorsPage';
+import HomePage from './pages/Home/HomePage';
+import ServicesPage from './pages/Services/ServicesPage';
+import About from './pages/AboutUs/AboutUs'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation()
@@ -48,6 +60,7 @@ const AppContent = () => {
       <main className="flex-grow mt-4">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/doctors" element={<DoctorsPage />} />
           <Route path="/appointment" element={<AppointmentPage />} />
