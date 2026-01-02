@@ -14,12 +14,11 @@ import {
   Star,
   Stethoscope,
   Users,
-  ChevronRight,
   CheckCircle,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLocale } from '@/providers/LocaleProvider';
-import doctorImg from '@/assets/images/Dr.png'; 
+import doctorImg from '@/assets/images/Dr2.png';
 
 const Hero = () => {
   const [currentStat, setCurrentStat] = useState(0);
@@ -97,9 +96,8 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-primary-50/20 py-8 md:py-12 lg:py-16">
-      {/* Premium Background Elements */}
+     
       <div className="absolute inset-0 overflow-hidden">
-        
         <motion.div
           animate={{
             x: [0, 100, 0],
@@ -125,20 +123,18 @@ const Hero = () => {
           }}
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-accent-teal/8 via-primary-500/8 to-accent-blue/8 rounded-full blur-3xl"
         />
-        
-  
       </div>
 
       <div className="relative container-custom px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
-          {/* Left Column - Premium Content */}
+       
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="relative z-10"
           >
-            {/* Credentials Badge */}
+         
             <motion.div
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -167,27 +163,23 @@ const Hero = () => {
               </div>
             </motion.div>
 
-            {/* Doctor Professional Title - Improved Layout */}
+         
             <div className="mb-6">
-       
-
-              {/* Doctor Name with Improved Hierarchy */}
+            
               <motion.h1
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3"
               >
-
-              
-<div className="relative">
-  <span className="bg-gradient-to-r from-primary-600 via-primary-500 to-accent-teal bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_auto]">
-    {content.titleLine1}
-  </span>
-</div>
-
+                <div className="relative">
+                  <span className="bg-gradient-to-r from-primary-600 via-primary-500 to-accent-teal bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_auto]">
+                    {content.titleLine1}
+                  </span>
+                </div>
               </motion.h1>
 
+             
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -214,7 +206,7 @@ const Hero = () => {
               </motion.div>
             </div>
 
-            {/* Description with Medical Focus */}
+          
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -224,7 +216,7 @@ const Hero = () => {
               {content.description}
             </motion.p>
 
-            {/* Medical Features - Optimized layout */}
+       
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -250,7 +242,7 @@ const Hero = () => {
               ))}
             </motion.div>
 
-            {/* Premium CTAs */}
+            
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -263,7 +255,6 @@ const Hero = () => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-                {/* Medical gradient animation */}
                 <motion.div
                   animate={isHovered ? 
                     { background: "linear-gradient(90deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%)" } : 
@@ -273,7 +264,6 @@ const Hero = () => {
                   className="absolute inset-0"
                 />
                 
-                {/* Pulse effect */}
                 <div className="absolute inset-0 overflow-hidden">
                   <div className="absolute -inset-x-full -inset-y-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:translate-x-full transition-transform duration-1000" />
                 </div>
@@ -282,7 +272,6 @@ const Hero = () => {
                 <span className="relative z-10 text-base">{content.cta.primary}</span>
                 <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
                 
-                {/* Medical sparkles */}
                 <Sparkles className="absolute -top-1 -right-1 w-6 h-6 text-primary-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Link>
 
@@ -296,7 +285,7 @@ const Hero = () => {
               </Link>
             </motion.div>
 
-            {/* Trust Indicators - Optimized */}
+           
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -325,125 +314,38 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Medical Visuals - Optimized for width */}
+          {/* Right Column - Clean Image Section */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="relative"
           >
-            {/* Main Visual Container */}
+    
             <div className="relative">
-              {/* Medical Glow Effect */}
+   
               <motion.div
                 animate={{ rotate: [0, 5, 0] }}
                 transition={{ duration: 12, repeat: Infinity }}
                 className="absolute -bottom-4 -left-4 w-full h-60 bg-gradient-to-br from-primary-500/15 via-accent-teal/15 to-primary-400/15 rounded-2xl rotate-3 blur-xl hidden md:block"
               />
               
-              {/* Medical Environment Image - Optimized size */}
+           
               <div className="relative rounded-2xl overflow-hidden shadow-xl group">
-                {/* Professional Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-800/10 via-primary-600/15 to-accent-teal/10 z-10" />
                 
                 <img 
-  src={doctorImg}
-  alt={language === 'tr' ? "Modern Kardiyoloji Ortamı" : "Modern Cardiology Environment"}
-  className="w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[3/2] lg:aspect-square object-cover group-hover:scale-105 transition-transform duration-700"
-/>
-                
-                {/* Overlay Content */}
-                <div className="absolute inset-0 z-20 p-4 md:p-6 flex flex-col justify-between">
-                  {/* Live Status Badge */}
-                  <div className="inline-flex items-center gap-2 self-end">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-emerald-500 rounded-full blur animate-pulse" />
-                      <div className="relative bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2">
-                        <Heart className="w-4 h-4 text-emerald-600 animate-heartbeat" />
-                        <span className="text-sm font-semibold text-gray-800">Cardiology Specialist</span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+                  src={doctorImg}
+                  alt={language === 'tr' ? "Dr. Redwan Seid Busery" : "Dr. Redwan Seid Busery"}
+                  className="w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[3/2] lg:aspect-square object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
-
-              {/* Animated Stats Card - Position optimized */}
-              <motion.div
-                animate={controls}
-                className="absolute -top-3 -right-2 sm:-top-4 sm:-right-3 md:-top-5 md:-right-4 w-40 sm:w-48 md:w-56 bg-white rounded-xl shadow-xl p-3 md:p-4 border border-gray-100"
-              >
-                <div className="flex items-center gap-2 md:gap-3">
-                  <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br ${stats[currentStat].color} flex items-center justify-center flex-shrink-0`}>
-                    {React.createElement(stats[currentStat].icon, { className: "w-4 h-4 md:w-5 md:h-5 text-white" })}
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-lg md:text-xl font-bold text-gray-900 truncate">{stats[currentStat].value}</div>
-                    <div className="text-xs text-gray-600 truncate">{stats[currentStat].label}</div>
-                    <div className="text-xs text-gray-500 mt-0.5">{stats[currentStat].description}</div>
-                  </div>
-                </div>
-           
-                <div className="flex gap-1 mt-2">
-                  {stats.map((_, index) => (
-                    <motion.div
-                      key={index}
-                      className={`h-1 rounded-full transition-all duration-300 ${index === currentStat ? 'bg-primary-600' : 'bg-gray-200'}`}
-                      animate={{ width: index === currentStat ? '24px' : '6px' }}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Doctor Badge - Optimized position */}
-              <motion.div
-                initial={{ y: 0 }}
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -bottom-2 right-2 md:-bottom-3 md:right-4 bg-white rounded-xl shadow-xl p-2 md:p-3 border border-gray-100 max-w-[160px] md:max-w-[180px]"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-primary-700 to-primary-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-xs md:text-sm">DR</span>
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-bold text-gray-900 truncate">{content.doctorCard.name}</div>
-                    <div className="text-xs text-gray-600 truncate">{content.doctorCard.availability}</div>
-                  </div>
-                  <div className="ml-1 flex items-center text-amber-500 flex-shrink-0">
-                    <Star className="w-3 h-3 md:w-4 md:h-4 fill-current" />
-                    <span className="ml-0.5 font-bold text-xs md:text-sm">4.9</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Mini Stats Grid - Optimized */}
-            <div className="grid grid-cols-3 gap-2 md:gap-3 mt-4 md:mt-6">
-              {[
-                { value: "TKD", label: content.miniStats[0].label, color: "bg-gradient-to-br from-blue-500 to-blue-600 text-black" },
-                { value: "Research", label: content.miniStats[1].label, color: "bg-gradient-to-br from-emerald-500 to-green-600 text-black" },
-                { value: "ESC", label: content.miniStats[2].label, color: "bg-gradient-to-br from-primary-700 to-primary-800 text-black" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.08 }}
-                  className="bg-white/90 backdrop-blur-sm rounded-xl p-2 md:p-3 text-center border border-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300"
-                >
-                  <div className={`text-base md:text-lg font-bold mb-1 ${stat.color} bg-clip-text text-transparent`}>
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-gray-700 font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Hint - Only show on larger screens */}
+ 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
