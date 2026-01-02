@@ -1,234 +1,427 @@
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
 import {
-  Menu,
-  X,
-  Phone,
+  AnimatePresence,
+  motion,
+} from 'framer-motion';
+import {
   Calendar,
-  Search,
-  User,
-  Bell,
-  Shield,
+  ChevronRight,
   Clock,
   MapPin,
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+  Menu,
+  Phone,
+  Search,
+  Shield,
+  Sparkles,
+  X,
+} from 'lucide-react';
+import {
+  Link,
+  useLocation,
+} from 'react-router-dom';
+
+import { LanguageSelector } from '@/components/LanguageSelector';
+import { useLocale } from '@/providers/LocaleProvider';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const searchInputRef = useRef(null);
   const location = useLocation();
+  const { getCommon, getNavItems } = useLocale();
+
+  const navItems = getNavItems();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
+    window.addEventListener('scroll', handler);
+    return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  const navItems = [
-    { label: "Home", path: "/" },
-    { label: "Services", path: "/services" },
-    { label: "Doctors", path: "/doctors" },
-    { label: "Appointment", path: "/appointment" },
-    { label: "Contact", path: "/contact" },
-  ];
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchOpen]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchValue.trim()) {
+      console.log('Searching for:', searchValue);
+      // Implement search logic here
+    }
+  };
 
   return (
     <>
-      
-      <div className="w-full bg-gradient-to-r from-primary-900 to-primary-400 text-white backdrop-blur-md">
-        <div className="container-custom px-6">
-          <div className="flex items-center justify-between h-10">
-
+      {/* Top Bar - Premium */}
+      <div className="w-full bg-gradient-to-r from-primary-900 via-primary-700 to-primary-600 text-white">
+        <div className="container-custom px-4 sm:px-6">
+          <div className="flex items-center justify-between h-12">
+            {/* Left side - Contact info */}
             <div className="flex items-center gap-6">
-              <div className="hidden md:flex items-center gap-2 opacity-90">
-                <Clock className="w-4 h-4" />
-                <span className="text-sm">Mon - Sat: 8AM - 8PM</span>
-              </div>
-              <div className="hidden md:flex items-center gap-2 opacity-90">
-                <MapPin className="w-4 h-4" />
-                <span className="text-sm">123 Medical Street</span>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="hidden md:flex items-center gap-2"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-white/10 rounded-full blur-sm" />
+                  <Clock className="w-4 h-4 relative z-10" />
+                </div>
+                <span className="text-sm font-medium">{getCommon('openHours')}</span>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 }}
+                className="hidden md:flex items-center gap-2"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-white/10 rounded-full blur-sm" />
+                  <MapPin className="w-4 h-4 relative z-10" />
+                </div>
+                <span className="text-sm font-medium">{getCommon('address')}</span>
+              </motion.div>
             </div>
 
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
-                <span className="text-sm">Emergency: (123) 456-7890</span>
+            {/* Right side - Emergency contact */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-4"
+            >
+              <div className="hidden md:flex items-center gap-2">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-emerald-500 rounded-full blur animate-pulse" />
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full relative z-10" />
+                </div>
+                <span className="text-sm font-medium">
+                  {getCommon('emergency')}: (123) 456-7890
+                </span>
               </div>
-              <button className="hidden lg:flex items-center gap-2 hover:opacity-80 transition">
-                <Bell className="w-4 h-4" />
-                <span className="text-sm">Notifications</span>
-              </button>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
 
-    
+      {/* Main Header - Premium */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 bg-gradient-to-r from-primary-100 to-white backdrop-blur-xl
-        ${scrolled ? "shadow-xl py-2" : "py-4"}
-      `}
+        className={`sticky top-0 z-50 transition-all duration-500 ${
+          scrolled 
+            ? 'bg-white/95 backdrop-blur-xl shadow-2xl py-2' 
+            : 'bg-gradient-to-r from-white via-primary-50/30 to-white py-4'
+        }`}
       >
         <div className="container-custom">
-
-          <div className="flex items-center justify-between h-25">
-
-      
-            <Link to="/" className="flex items-center gap-4 group relative">
-
+          <div className="flex items-center justify-between h-20">
+            {/* Logo Section */}
+            <Link to="/" className="flex items-center gap-4 group">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.05, rotate: 1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 className="relative"
               >
-               
+                {/* Glow effect */}
                 <motion.div
                   animate={{ opacity: [0.3, 0.6, 0.3] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary-600/40 to-primary-800/40 blur-xl"
+                  className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary-500/40 to-accent-teal/40 blur-xl"
                 />
-
-                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-800 shadow-2xl flex items-center justify-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md">
-                    <span className="text-white text-3xl font-black">+</span>
+                
+                {/* Logo container */}
+                <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-800 shadow-2xl flex items-center justify-center group-hover:shadow-3xl transition-shadow duration-300">
+                  <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/30">
+                    <span className="text-white text-2xl font-black">+</span>
                   </div>
                 </div>
+
+                {/* Floating particles */}
+                <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-primary-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
 
-      
-              <div>
-                <h1 className="text-3xl font-black bg-gradient-to-r from-primary-700 to-primary-900 bg-clip-text text-transparent tracking-tight">
+              <div className="relative">
+                <motion.h1
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="text-2xl font-black bg-gradient-to-r from-primary-700 via-primary-600 to-primary-800 bg-clip-text text-transparent tracking-tight"
+                >
                   ClinicCare
-                </h1>
-                <p className="text-sm text-gray-600 flex items-center gap-1">
-                  <Shield className="w-4 h-4 text-primary-600" />
-                  Premium Healthcare
-                </p>
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-sm text-gray-600 flex items-center gap-1.5"
+                >
+                  <Shield className="w-3.5 h-3.5 text-primary-600" />
+                  {getCommon('logoSubtitle')}
+                </motion.p>
               </div>
             </Link>
 
-          
-            <nav className="hidden lg:flex items-center gap-2">
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => {
                 const active = location.pathname === item.path;
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`
-                    relative px-5 py-3 rounded-lg font-medium transition-all
-                    ${
-                      active
-                        ? "text-primary-700 bg-primary-50 shadow-sm"
-                        : "text-gray-700 hover:bg-gray-50"
-                    }
-                  `}
+                    className="group relative"
                   >
-                    {item.label}
-
-          
-                    {active && (
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`relative px-5 py-2.5 rounded-xl font-medium transition-all duration-300 ${
+                        active
+                          ? 'text-primary-700'
+                          : 'text-gray-700 hover:text-primary-600'
+                      }`}
+                    >
+                      {/* Background on hover/active */}
+                      <div className={`absolute inset-0 rounded-xl transition-all duration-300 ${
+                        active
+                          ? 'bg-gradient-to-r from-primary-100/80 to-primary-50/80 border border-primary-200 shadow-sm'
+                          : 'group-hover:bg-white/80 group-hover:shadow-md'
+                      }`} />
+                      
+                      <span className="relative z-10 flex items-center gap-2">
+                        {item.label}
+                        {active && (
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse" />
+                        )}
+                      </span>
+                      
+                      {/* Underline animation */}
                       <motion.div
-                        layoutId="nav-underline"
-                        className="absolute bottom-0 left-0 right-0 h-1 bg-primary-600 rounded-t-full"
+                        layoutId={`nav-underline-${item.path}`}
+                        className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
+                          active
+                            ? 'w-3/4 bg-gradient-to-r from-primary-500 to-accent-teal'
+                            : 'w-0 group-hover:w-1/2 bg-primary-400'
+                        }`}
                       />
-                    )}
+                    </motion.div>
                   </Link>
                 );
               })}
             </nav>
 
+            {/* Right Side Actions */}
+            <div className="flex items-center gap-3">
+          
 
-            <div className="flex items-center gap-4">
-
-           
-
-      
-              <div className="hidden xl:flex items-center gap-3 px-4 py-2.5 bg-gray-50 rounded-xl">
-                <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-white" />
+              {/* Language Selector - Desktop (next to Book Now) */}
+              <div className="hidden lg:flex items-center gap-3">
+                <div className="relative">
+                  <LanguageSelector variant="desktop" />
                 </div>
-                <div>
-                  <p className="text-xs text-gray-500">Emergency</p>
-                  <a className="font-bold text-gray-800">(123) 456-7890</a>
-                </div>
+
+                {/* Book Now Button */}
+                <Link
+                  to="/appointment"
+                  className="group relative inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+                >
+                  {/* Animated gradient background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 group-hover:from-primary-500 group-hover:to-accent-teal transition-all duration-500" />
+                  
+                  {/* Shimmer effect */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    <div className="absolute -inset-x-full -inset-y-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-full transition-transform duration-1000" />
+                  </div>
+
+                  <Calendar className="w-5 h-5 relative z-10" />
+                  <span className="relative z-10">{getCommon('bookNow')}</span>
+                  <ChevronRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
 
-          
-              <Link
-                to="/appointment"
-                className="hidden lg:flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white font-medium shadow-md hover:shadow-lg transition"
+              {/* Search Button - Desktop */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setSearchOpen(!searchOpen)}
+                className="hidden lg:flex items-center justify-center w-10 h-10 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-colors"
               >
-                <Calendar className="w-5 h-5" />
-                Book Now
-              </Link>
+                <Search className="w-5 h-5 text-gray-600" />
+              </motion.button>
 
-            
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden p-3 rounded-xl bg-gray-50"
-              >
-                {isMenuOpen ? <X /> : <Menu />}
-              </button>
+              {/* Mobile Actions */}
+              <div className="flex items-center gap-2 lg:hidden">
+
+                {/* Mobile Menu Toggle */}
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="relative p-3 rounded-xl bg-gradient-to-br from-white to-gray-50 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                >
+                  {isMenuOpen ? (
+                    <X className="w-5 h-5 text-gray-700" />
+                  ) : (
+                    <Menu className="w-5 h-5 text-gray-700" />
+                  )}
+                </motion.button>
+              </div>
             </div>
           </div>
 
-  
+          {/* Search Bar - Desktop */}
           <AnimatePresence>
             {searchOpen && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
+                animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 className="hidden lg:block mt-4 overflow-hidden"
               >
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <form onSubmit={handleSearch} className="relative">
+                  <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
-                    className="w-full pl-14 pr-4 py-4 bg-white/70 border border-gray-200 rounded-xl shadow-sm backdrop-blur-md focus:ring-2 focus:ring-primary-500"
-                    placeholder="Search doctors, services, symptoms..."
+                    ref={searchInputRef}
+                    type="text"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    placeholder={getCommon('searchPlaceholder')}
+                    className="w-full pl-14 pr-4 py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200 rounded-2xl shadow-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
                   />
-                </div>
+                  <button
+                    type="submit"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                  >
+                    Search
+                  </button>
+                </form>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       </header>
 
-   
+      {/* Mobile Menu - Premium */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            className="lg:hidden fixed top-0 right-0 w-80 h-full bg-white/80 backdrop-blur-xl shadow-xl z-[999] p-6"
-          >
-            <div className="flex flex-col gap-6">
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMenuOpen(false)}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+            />
 
-              {navItems.map((item) => (
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25 }}
+              className="fixed top-0 right-0 w-full max-w-sm h-full bg-gradient-to-b from-white via-white to-primary-50/30 backdrop-blur-xl shadow-2xl z-50 overflow-y-auto"
+            >
+              {/* Header */}
+              <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 py-4">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-xl font-bold text-gray-800">Menu</h2>
+                  <button
+                    onClick={() => setIsMenuOpen(false)}
+                    className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    <X className="w-5 h-5 text-gray-600" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 space-y-6">
+                {/* Language Selector */}
+                <LanguageSelector variant="mobile-full" />
+
+                {/* Navigation Links */}
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-2">
+                    Navigation
+                  </h3>
+                  <div className="space-y-1">
+                    {navItems.map((item) => {
+                      const active = location.pathname === item.path;
+                      return (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={`group flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 ${
+                            active
+                              ? 'bg-gradient-to-r from-primary-50 to-primary-100/50 border border-primary-200 text-primary-700'
+                              : 'hover:bg-gray-50 text-gray-700'
+                          }`}
+                        >
+                          <span className="font-medium">{item.label}</span>
+                          <div className="flex items-center gap-2">
+                            {active && (
+                              <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
+                            )}
+                            <ChevronRight className={`w-4 h-4 transition-transform ${
+                              active ? 'text-primary-600' : 'text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1'
+                            }`} />
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Emergency Contact - Mobile */}
+                <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-4 border border-primary-100">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-gray-500">{getCommon('emergency')}</p>
+                      <a className="text-lg font-bold text-gray-800">(123) 456-7890</a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Book Now Button - Mobile */}
                 <Link
-                  key={item.path}
-                  to={item.path}
+                  to="/appointment"
                   onClick={() => setIsMenuOpen(false)}
-                  className={`px-4 py-3 rounded-xl font-medium ${
-                    location.pathname === item.path
-                      ? "bg-primary-50 text-primary-700"
-                      : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                  className="block w-full"
                 >
-                  {item.label}
-                </Link>
-              ))}
+                  <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 p-4 text-center">
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 overflow-hidden">
+                      <div className="absolute -inset-x-full -inset-y-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-full transition-transform duration-1000" />
+                    </div>
 
-        
-            </div>
-          </motion.div>
+                    <div className="relative z-10 flex items-center justify-center gap-3">
+                      <Calendar className="w-5 h-5 text-white" />
+                      <span className="font-bold text-white">{getCommon('bookNow')}</span>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Footer */}
+                <div className="pt-6 border-t border-gray-200">
+                  <p className="text-center text-xs text-gray-500">
+                    Premium Healthcare Services
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
