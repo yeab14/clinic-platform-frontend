@@ -16,7 +16,9 @@ import {
   Phone,
   Shield,
   Sparkles,
+  Heart,
   X,
+  Stethoscope
 } from 'lucide-react';
 import {
   Link,
@@ -101,36 +103,19 @@ export default function Header() {
         <div className="px-3 sm:px-4">
           <div className="flex items-center justify-between h-20">
             <Link to="/" className="flex items-center gap-3 sm:gap-4 group">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
-                <motion.div
-                  animate={{ opacity: [0.3, 0.6, 0.3] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary-500/40 to-accent-teal/40 blur-xl"
-                />
-                
-                <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-800 shadow-2xl flex items-center justify-center group-hover:shadow-3xl transition-shadow duration-300">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/30">
-                    <span className="text-white text-xl sm:text-2xl font-black">+</span>
-                  </div>
+            <div className="relative">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <Heart className="w-8 h-8 text-white" />
                 </div>
-
-                <Sparkles className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 text-primary-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
+                <div className="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full border-2 border-primary-100 flex items-center justify-center">
+                  <Stethoscope className="w-3 h-3 text-primary-600" />
+                </div>
+              </div>
 
               <div className="relative">
-                <motion.h1
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="text-xl sm:text-2xl font-black bg-gradient-to-r from-primary-700 via-primary-600 to-primary-800 bg-clip-text text-transparent tracking-tight"
-                >
-                  ClinicCare
-                </motion.h1>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  Dr. Redwan Seid Busery
+                </h2>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}

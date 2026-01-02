@@ -601,14 +601,7 @@ const ContactPage = () => {
                 
                 {/* Location Details */}
                 <div className="p-4 bg-gradient-to-br from-blue-50/50 to-cyan-50/50 rounded-xl border border-blue-100">
-                  <div className="flex items-start justify-between mb-3">
-                    <h4 className="font-bold text-gray-900">
-                      {tContact?.location?.name || 'Acıbadem Kartal Hospital'}
-                    </h4>
-                    <span className="px-2.5 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-full">
-                      {language === 'en' ? 'Main Hospital' : 'Ana Hastane'}
-                    </span>
-                  </div>
+                
                   
                   <div className="space-y-3">
                     <div className="flex items-start gap-2">

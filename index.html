@@ -1,13 +1,251 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>clinic-platform-frontend</title>
+    <meta name="theme-color" content="#007AFF">
+    
+    <!-- Primary Meta Tags -->
+    <title>Dr. Redwan Seid Busery | Cardiology Specialist in Istanbul | Comprehensive Heart Care</title>
+    <meta name="description" content="Dr. Redwan Seid Busery is a board-certified cardiology specialist in Istanbul providing comprehensive heart care, from diagnosis to long-term follow-up, based on international guidelines. Serving at Acıbadem Kartal Hospital.">
+    <meta name="keywords" content="cardiologist Istanbul, heart specialist Turkey, cardiology services, heart disease treatment, cardiac care Istanbul, Dr. Redwan Seid Busery, Acıbadem Kartal Hospital">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://drredwanbusery.com/">
+    <meta property="og:title" content="Dr. Redwan Seid Busery | Cardiology Specialist">
+    <meta property="og:description" content="Comprehensive cardiology care based on scientific evidence and international guidelines. Serving patients in Istanbul and Turkey.">
+    <meta property="og:image" content="https://drredwanbusery.com/og-image.jpg">
+    <meta property="og:image:alt" content="Dr. Redwan Seid Busery - Cardiology Specialist">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="tr_TR">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@DrRedwanBusery">
+    <meta name="twitter:title" content="Dr. Redwan Seid Busery | Cardiology Specialist">
+    <meta name="twitter:description" content="Comprehensive heart care based on international guidelines in Istanbul, Turkey.">
+    <meta name="twitter:image" content="https://drredwanbusery.com/twitter-image.jpg">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="author" content="Dr. Redwan Seid Busery">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MedicalBusiness",
+          "@id": "https://drredwanbusery.com/#medical-business",
+          "name": "Dr. Redwan Seid Busery Cardiology Practice",
+          "description": "Comprehensive cardiology care based on scientific evidence and international guidelines",
+          "url": "https://drredwanbusery.com/",
+          "telephone": "+90-553-418-6776",
+          "email": "redwan.busery@acibadem.com",
+          "image": "https://drredwanbusery.com/logo.jpg",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Çavuşoğlu, Sanayi Cd. No:1",
+            "addressLocality": "Kartal",
+            "addressRegion": "Istanbul",
+            "postalCode": "34873",
+            "addressCountry": "TR"
+          },
+          "areaServed": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+              "@type": "GeoCoordinates",
+              "latitude": 40.9108,
+              "longitude": 29.1924
+            },
+            "geoRadius": "50000"
+          },
+          "medicalSpecialty": "Cardiology"
+        },
+        {
+          "@type": "Physician",
+          "@id": "https://drredwanbusery.com/#physician",
+          "name": "Dr. Redwan Seid Busery",
+          "url": "https://drredwanbusery.com/",
+          "image": "https://drredwanbusery.com/dr-redwan-busery.jpg",
+          "description": "Cardiology Specialist providing comprehensive heart care based on international guidelines",
+          "medicalSpecialty": "Cardiology",
+          "memberOf": [
+            {
+              "@type": "Organization",
+              "name": "Turkish Society of Cardiology"
+            },
+            {
+              "@type": "Organization",
+              "name": "Turkish Medical Association"
+            }
+          ],
+          "alumniOf": [
+            {
+              "@type": "EducationalOrganization",
+              "name": "Marmara University Faculty of Medicine"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Ondokuz Mayıs University"
+            }
+          ],
+          "knowsLanguage": ["en", "tr"],
+          "availableService": [
+            {
+              "@type": "MedicalProcedure",
+              "name": "Comprehensive Cardiology Evaluation"
+            },
+            {
+              "@type": "MedicalProcedure",
+              "name": "Electrocardiography (ECG)"
+            },
+            {
+              "@type": "MedicalProcedure",
+              "name": "Echocardiography"
+            },
+            {
+              "@type": "MedicalProcedure",
+              "name": "Coronary Angiography"
+            }
+          ]
+        },
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://drredwanbusery.com/#medical-clinic",
+          "name": "Acıbadem Kartal Hospital",
+          "url": "https://www.acibadem.com.tr/hastaneler/kartal-hastanesi/",
+          "image": "https://drredwanbusery.com/acibadem-kartal.jpg",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Çavuşoğlu, Sanayi Cd. No:1",
+            "addressLocality": "Kartal",
+            "addressRegion": "Istanbul",
+            "postalCode": "34873",
+            "addressCountry": "TR"
+          },
+          "telephone": "+90-216-404-44-44",
+          "openingHours": "Mo-Fr 08:00-20:00, Sa 09:00-17:00"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://drredwanbusery.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://drredwanbusery.com/"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://drredwanbusery.com/#website",
+          "url": "https://drredwanbusery.com/",
+          "name": "Dr. Redwan Seid Busery - Cardiology",
+          "description": "Cardiology Specialist in Istanbul providing comprehensive heart care",
+          "publisher": {
+            "@id": "https://drredwanbusery.com/#medical-business"
+          },
+          "inLanguage": ["en-US", "tr-TR"]
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://drredwanbusery.com/">
+    
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="https://drredwanbusery.com/" />
+    <link rel="alternate" hreflang="tr" href="https://drredwanbusery.com/tr/" />
+    <link rel="alternate" hreflang="x-default" href="https://drredwanbusery.com/" />
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007AFF">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/src/main.jsx" as="script">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS -->
+    <style>
+      /* Critical CSS for initial load */
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: #ffffff;
+      }
+      #root {
+        min-height: 100vh;
+      }
+      /* Loading state */
+      .app-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- No-JS Fallback -->
+    <noscript>
+      <div style="padding: 2rem; text-align: center; background: #f8f9fa;">
+        <h1 style="color: #007AFF;">Dr. Redwan Seid Busery - Cardiology Specialist</h1>
+        <p>This website requires JavaScript to function properly. Please enable JavaScript to view the content.</p>
+        <p>For immediate assistance, you can contact Dr. Redwan Seid Busery at:</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><strong>Phone:</strong> +90 553 418 6776 (WhatsApp only)</li>
+          <li><strong>Email:</strong> redwan.busery@acibadem.com</li>
+          <li><strong>Location:</strong> Acıbadem Kartal Hospital, Kartal, Istanbul</li>
+        </ul>
+      </div>
+    </noscript>
+    
+    <!-- Loading State (visible until React loads) -->
+    <div id="root">
+      <div class="app-loading">
+        <div style="text-align: center;">
+          <div style="width: 50px; height: 50px; border: 3px solid #f3f3f3; border-top: 3px solid #007AFF; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;"></div>
+          <p style="color: #007AFF; font-weight: 600;">Loading Dr. Redwan Seid Busery Cardiology Practice...</p>
+        </div>
+      </div>
+    </div>
+    
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Simple Loading Animation -->
+    <script>
+      // Remove loading state when app loads
+      document.addEventListener('DOMContentLoaded', function() {
+        const root = document.getElementById('root');
+        const loadingDiv = root.querySelector('.app-loading');
+        if (loadingDiv) {
+          loadingDiv.style.display = 'none';
+        }
+      });
+    </script>
+    
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
   </body>
 </html>
