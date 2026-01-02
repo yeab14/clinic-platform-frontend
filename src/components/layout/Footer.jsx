@@ -1,6 +1,5 @@
-import React from 'react'
+import { ArrowRight, Award, ChevronRight, Clock, Facebook, Globe, Heart, Instagram, Linkedin, Mail, MapPin, Phone, Shield, Sparkles, Stethoscope, Twitter, Users } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Heart, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, ArrowRight, Shield, Award, Clock, Globe, ChevronRight, Stethoscope, Sparkles, Users } from 'lucide-react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -230,7 +229,7 @@ const Footer = () => {
                   <li className="flex items-center gap-3">
                     <Phone className="w-5 h-5 text-cyan-400 flex-shrink-0" />
                     <a href="tel:+1234567890" className="text-gray-400 hover:text-white transition-colors text-sm">
-                      (123) 456-7890
+                     +90 553 418 6776
                     </a>
                   </li>
                   <li className="flex items-center gap-3">

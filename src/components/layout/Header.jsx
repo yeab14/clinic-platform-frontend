@@ -1,4 +1,4 @@
-import React, {
+import {
   useEffect,
   useState,
 } from 'react';
@@ -83,7 +83,7 @@ export default function Header() {
                   <div className="w-2 h-2 bg-emerald-400 rounded-full relative z-10" />
                 </div>
                 <span className="text-sm font-medium">
-                  {getCommon('emergency')}: (123) 456-7890
+                  {getCommon('Whatsapp')} : +90 553 418 6776
                 </span>
               </div>
             </motion.div>

@@ -1,9 +1,31 @@
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageSquare, Calendar, Sparkles, Users, Shield, Zap, Heart, ArrowRight, Star, Award, X } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  ArrowRight,
+  Building,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Heart,
+  Linkedin,
+  Mail,
+  MapPin,
+  MessageCircle,
+  MessageSquare,
+  Navigation,
+  Phone,
+  Send,
+  Shield,
+  Sparkles,
+  Star,
+  Users,
+  X,
+  Zap,
+} from 'lucide-react';
+import { useLocale } from '@/providers/LocaleProvider';
 
 const ContactPage = () => {
+  const { content, language } = useLocale();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,15 +33,20 @@ const ContactPage = () => {
     subject: '',
     message: '',
     contactType: 'general'
-  })
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [activeInfo, setActiveInfo] = useState(null)
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [activeInfo, setActiveInfo] = useState(null);
+
+  // Hospital address and Google Maps URL
+  const hospitalAddress = "Çavuşoğlu, Sanayi Cd. No:1, 34873 Kartal/İstanbul";
+  const encodedAddress = encodeURIComponent(hospitalAddress);
+  const googleMapsEmbedUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.478278858471!2d29.180827315412032!3d40.90831797931219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac9c6bcdd6b3d%3A0x5e3c5c2c8c8c8c8c!2s${encodedAddress}!5e0!3m2!1sen!2str!4v1641234567890!5m2!1sen!2str`;
+  const googleMapsUrl = `https://maps.google.com/?q=${encodedAddress}`;
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    // Simulate form submission
+    e.preventDefault();
     setTimeout(() => {
-      setIsSubmitted(true)
+      setIsSubmitted(true);
       setFormData({
         name: '',
         email: '',
@@ -27,93 +54,82 @@ const ContactPage = () => {
         subject: '',
         message: '',
         contactType: 'general'
-      })
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000)
-    }, 1000)
-  }
+      });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    }, 1000);
+  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  // Get translations from content
+  const tContact = content?.contact || {};
+  const tCommon = content?.common || {};
 
   const contactInfo = [
     {
-      icon: Phone,
-      title: 'Emergency Line',
-      details: '(123) 456-7890',
-      description: '24/7 emergency support for urgent medical needs',
-      color: 'from-blue-500 to-cyan-500',
-      features: ['Immediate Response', 'Medical Emergency', 'Urgent Care'],
-      gradient: 'from-blue-500/10 via-blue-400/5 to-cyan-500/10'
+      icon: MessageCircle,
+      title: tContact?.contactMethods?.whatsapp?.title || 'WhatsApp Only',
+      details: '+90 553 418 6776',
+      description: tContact?.contactMethods?.whatsapp?.description || 'For medical consultations and appointments via WhatsApp',
+      color: 'from-green-500 to-emerald-500',
+      features: tContact?.contactMethods?.whatsapp?.features || ['Medical Consultation', 'Appointment Booking', 'Quick Response'],
+      gradient: 'from-green-500/10 via-green-400/5 to-emerald-500/10',
+      link: 'https://wa.me/905534186776',
+      type: 'whatsapp'
     },
     {
       icon: Mail,
-      title: 'Email Support',
-      details: 'support@cliniccare.com',
-      description: 'Response within 2 hours, comprehensive assistance',
+      title: tContact?.contactMethods?.email?.title || 'Email',
+      details: 'redwan.busery@acibadem.com',
+      description: tContact?.contactMethods?.email?.description || 'For detailed inquiries and medical documentation',
       color: 'from-blue-600 to-indigo-600',
-      features: ['Detailed Response', 'Attachment Support', 'Follow-up'],
-      gradient: 'from-blue-600/10 via-blue-500/5 to-indigo-600/10'
+      features: tContact?.contactMethods?.email?.features || ['Detailed Response', 'Medical Reports', 'Follow-up'],
+      gradient: 'from-blue-600/10 via-blue-500/5 to-indigo-600/10',
+      link: 'mailto:redwan.busery@acibadem.com',
+      type: 'email'
     },
     {
-      icon: MessageSquare,
-      title: 'Live Chat',
-      details: 'Available 24/7',
-      description: 'Instant messaging with our medical team',
-      color: 'from-cyan-500 to-blue-500',
-      features: ['Instant Replies', 'File Sharing', 'Screenshot Support'],
-      gradient: 'from-cyan-500/10 via-cyan-400/5 to-blue-500/10'
+      icon: Building,
+      title: tContact?.contactMethods?.location?.title || 'Hospital Address',
+      details: tContact?.location?.name || 'Acıbadem Kartal Hospital',
+      description: tContact?.contactMethods?.location?.description || 'Acıbadem Kartal Hospital location and directions',
+      color: 'from-blue-500 to-cyan-500',
+      features: tContact?.contactMethods?.location?.features || ['Full Address', 'Google Maps', 'Navigation'],
+      gradient: 'from-blue-500/10 via-blue-400/5 to-cyan-500/10',
+      link: googleMapsUrl,
+      type: 'location'
     },
     {
-      icon: Users,
-      title: 'Patient Portal',
-      details: 'portal.cliniccare.com',
-      description: 'Secure messaging and appointment management',
+      icon: Linkedin,
+      title: tContact?.contactMethods?.linkedin?.title || 'LinkedIn Profile',
+      details: 'linkedin.com/in/redwan-seid-busery-cardiyology',
+      description: tContact?.contactMethods?.linkedin?.description || 'Professional network and academic profile',
       color: 'from-blue-700 to-violet-600',
-      features: ['Secure Messaging', 'Appointment History', 'Prescription Refills'],
-      gradient: 'from-blue-700/10 via-blue-600/5 to-violet-600/10'
+      features: tContact?.contactMethods?.linkedin?.features || ['Professional Network', 'Academic Profile', 'Connect'],
+      gradient: 'from-blue-700/10 via-blue-600/5 to-violet-600/10',
+      link: 'https://linkedin.com/in/redwan-seid-busery-cardiyology',
+      type: 'linkedin'
     }
-  ]
+  ];
 
-  const contactTypes = [
-    { value: 'general', label: 'General Inquiry', icon: MessageSquare },
-    { value: 'appointment', label: 'Book Appointment', icon: Calendar },
-    { value: 'billing', label: 'Billing & Insurance', icon: Shield },
-    { value: 'feedback', label: 'Feedback & Suggestions', icon: Heart },
-    { value: 'emergency', label: 'Medical Emergency', icon: Zap },
-    { value: 'technical', label: 'Technical Support', icon: Award },
-  ]
-
-  const supportHours = [
-    { day: 'Monday - Friday', time: '8:00 AM - 8:00 PM', emergency: true },
-    { day: 'Saturday', time: '9:00 AM - 5:00 PM', emergency: true },
-    { day: 'Sunday', time: '10:00 AM - 4:00 PM', emergency: true },
-    { day: '24/7', time: 'Emergency Line', emergency: true, highlight: true },
-  ]
-
-  const locations = [
-    {
-      name: 'Main Medical Center',
-      address: '123 Medical Street, Health City, HC 12345',
-      phone: '(123) 456-7890',
-      hours: 'Mon-Fri: 8AM-8PM, Sat: 9AM-5PM',
-      specialties: ['General Medicine', 'Emergency Care', 'Specialty Clinics']
-    },
-    {
-      name: 'Downtown Clinic',
-      address: '456 Wellness Avenue, Downtown, DT 67890',
-      phone: '(123) 456-7891',
-      hours: 'Mon-Fri: 9AM-7PM, Sat: 9AM-3PM',
-      specialties: ['Primary Care', 'Pediatrics', 'Women\'s Health']
-    }
-  ]
+  const getIconComponent = (iconName) => {
+    const icons = {
+      MessageSquare,
+      Calendar,
+      Heart,
+      Zap,
+      Users,
+      Shield,
+      Star
+    };
+    return icons[iconName] || MessageSquare;
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50/20 to-white">
-      {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/5 to-cyan-400/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-tr from-blue-500/3 to-indigo-500/3 rounded-full blur-3xl" />
@@ -154,14 +170,16 @@ const ContactPage = () => {
             className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-full mb-4 shadow-sm"
           >
             <Sparkles className="w-4 h-4 text-blue-600 animate-pulse" />
-            <span className="text-sm font-medium text-blue-700">24/7 Support Available</span>
+            <span className="text-sm font-medium text-blue-700">
+              {language === 'en' ? '24/7 WhatsApp Support' : '7/24 WhatsApp Desteği'}
+            </span>
           </motion.div>
           
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            <span className="text-gray-900">Get in</span>{' '}
+            <span className="text-gray-900">{tContact?.heroTitle || 'Get in'}</span>{' '}
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                Touch
+                {tContact?.heroHighlight || 'Touch'}
               </span>
               <motion.div
                 animate={{ width: ["0%", "100%", "0%"] }}
@@ -172,8 +190,7 @@ const ContactPage = () => {
           </h1>
           
           <p className="text-gray-600 max-w-2xl mx-auto mb-6 md:mb-8 text-sm md:text-base">
-            Our dedicated support team is ready to assist you. Choose the most convenient way 
-            to reach us for medical inquiries, appointments, or emergencies.
+            {tContact?.heroDescription || 'My dedicated support is ready to assist you. Choose the most convenient way to reach me for medical inquiries or appointments.'}
           </p>
         </motion.div>
 
@@ -185,18 +202,21 @@ const ContactPage = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12"
         >
           {contactInfo.map((info, index) => {
-            const Icon = info.icon
-            const isActive = activeInfo === index
+            const Icon = info.icon;
+            const isActive = activeInfo === index;
             
             return (
-              <motion.div
+              <motion.a
                 key={index}
+                href={info.link}
+                target={info.type !== 'email' ? "_blank" : "_self"}
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 + index * 0.1 }}
                 whileHover={{ y: -4 }}
                 onClick={() => setActiveInfo(isActive ? null : index)}
-                className={`relative cursor-pointer ${
+                className={`relative cursor-pointer block ${
                   isActive ? 'ring-2 ring-blue-500 ring-offset-2' : ''
                 }`}
               >
@@ -206,8 +226,8 @@ const ContactPage = () => {
                       <div className={`w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br ${info.color} rounded-xl flex items-center justify-center`}>
                         <Icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
                       </div>
-                      {info.title.includes('Emergency') && (
-                        <span className="px-2.5 py-1 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold rounded-full">
+                      {info.type === 'whatsapp' && (
+                        <span className="px-2.5 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold rounded-full">
                           24/7
                         </span>
                       )}
@@ -220,7 +240,12 @@ const ContactPage = () => {
                       {info.description}
                     </p>
                     
-                    <div className="text-blue-600 font-medium text-sm md:text-base mb-3">
+                    <div className={`font-medium text-sm md:text-base mb-3 ${
+                      info.type === 'whatsapp' ? 'text-green-600' :
+                      info.type === 'email' ? 'text-blue-600' :
+                      info.type === 'location' ? 'text-cyan-600' :
+                      'text-indigo-600'
+                    }`}>
                       {info.details}
                     </div>
                     
@@ -242,10 +267,9 @@ const ContactPage = () => {
                   </div>
                 </div>
                 
-                {/* Hover Effect */}
                 <div className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 hover:opacity-5 rounded-xl md:rounded-2xl transition-opacity`} />
-              </motion.div>
-            )
+              </motion.a>
+            );
           })}
         </motion.div>
 
@@ -275,17 +299,18 @@ const ContactPage = () => {
                             <CheckCircle className="w-6 h-6 text-white" />
                           </div>
                           <div className="flex-1">
-                            <h3 className="font-bold text-gray-900 text-lg mb-2">Message Sent Successfully!</h3>
+                            <h3 className="font-bold text-gray-900 text-lg mb-2">
+                              {tContact?.form?.successTitle || 'Message Sent Successfully!'}
+                            </h3>
                             <p className="text-gray-600 mb-4">
-                              We've received your message and our team will get back to you within 24 hours. 
-                              For urgent matters, please call our emergency line.
+                              {tContact?.form?.successMessage || 'I\'ve received your message and will get back to you within 24 hours. For urgent matters, please use WhatsApp.'}
                             </p>
                             <button
                               onClick={() => setIsSubmitted(false)}
                               className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-medium rounded-lg hover:shadow-md transition-all"
                             >
                               <Send className="w-4 h-4" />
-                              <span>Send Another Message</span>
+                              <span>{tContact?.form?.sendAnother || 'Send Another Message'}</span>
                             </button>
                           </div>
                           <button
@@ -305,8 +330,12 @@ const ContactPage = () => {
                     <Send className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">Send Us a Message</h2>
-                    <p className="text-gray-600 text-sm">We'll respond within 24 hours</p>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">
+                      {tContact?.form?.title || 'Send a Message'}
+                    </h2>
+                    <p className="text-gray-600 text-sm">
+                      {tContact?.form?.description || 'I\'ll respond within 24 hours'}
+                    </p>
                   </div>
                 </div>
                 
@@ -314,12 +343,12 @@ const ContactPage = () => {
                   {/* Contact Type Selection */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-3">
-                      How can we help you? *
+                      {tContact?.form?.contactTypeLabel || 'How can I help you? *'}
                     </label>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                      {contactTypes.map((type, index) => {
-                        const Icon = type.icon
-                        const isSelected = formData.contactType === type.value
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      {(tContact?.contactTypes || []).map((type, index) => {
+                        const Icon = getIconComponent(type.icon);
+                        const isSelected = formData.contactType === type.value;
                         
                         return (
                           <motion.button
@@ -347,7 +376,7 @@ const ContactPage = () => {
                               {type.label}
                             </span>
                           </motion.button>
-                        )
+                        );
                       })}
                     </div>
                   </div>
@@ -356,7 +385,7 @@ const ContactPage = () => {
                   <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Full Name *
+                        {tContact?.form?.nameLabel || 'Full Name *'}
                       </label>
                       <div className="relative">
                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400">
@@ -367,7 +396,7 @@ const ContactPage = () => {
                           name="name"
                           required
                           className="w-full pl-10 pr-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all"
-                          placeholder="John Doe"
+                          placeholder={tContact?.form?.namePlaceholder || 'John Doe'}
                           value={formData.name}
                           onChange={handleChange}
                         />
@@ -376,7 +405,7 @@ const ContactPage = () => {
                     
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email Address *
+                        {tContact?.form?.emailLabel || 'Email Address *'}
                       </label>
                       <div className="relative">
                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400">
@@ -387,7 +416,7 @@ const ContactPage = () => {
                           name="email"
                           required
                           className="w-full pl-10 pr-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all"
-                          placeholder="john@example.com"
+                          placeholder={tContact?.form?.emailPlaceholder || 'john@example.com'}
                           value={formData.email}
                           onChange={handleChange}
                         />
@@ -396,7 +425,7 @@ const ContactPage = () => {
                     
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone Number
+                        {tContact?.form?.phoneLabel || 'Phone Number'}
                       </label>
                       <div className="relative">
                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400">
@@ -406,7 +435,7 @@ const ContactPage = () => {
                           type="tel"
                           name="phone"
                           className="w-full pl-10 pr-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all"
-                          placeholder="(123) 456-7890"
+                          placeholder={tContact?.form?.phonePlaceholder || '+90 (123) 456-7890'}
                           value={formData.phone}
                           onChange={handleChange}
                         />
@@ -415,14 +444,14 @@ const ContactPage = () => {
                     
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Subject *
+                        {tContact?.form?.subjectLabel || 'Subject *'}
                       </label>
                       <input
                         type="text"
                         name="subject"
                         required
                         className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all"
-                        placeholder="How can we help you?"
+                        placeholder={tContact?.form?.subjectPlaceholder || 'How can I help you?'}
                         value={formData.subject}
                         onChange={handleChange}
                       />
@@ -432,14 +461,14 @@ const ContactPage = () => {
                   {/* Message */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Message *
+                      {tContact?.form?.messageLabel || 'Message *'}
                     </label>
                     <textarea
                       name="message"
                       required
                       rows="5"
                       className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all resize-none"
-                      placeholder="Please provide details about your inquiry, including any specific concerns or questions you may have..."
+                      placeholder={tContact?.form?.messagePlaceholder || 'Please provide details about your inquiry...'}
                       value={formData.message}
                       onChange={handleChange}
                     />
@@ -450,7 +479,7 @@ const ContactPage = () => {
                     <div className="text-sm text-gray-600">
                       <div className="flex items-center gap-2">
                         <Shield className="w-4 h-4 text-blue-500" />
-                        <span>Your information is secure and encrypted</span>
+                        <span>{tContact?.form?.securityNote || 'Your information is secure and encrypted'}</span>
                       </div>
                     </div>
                     
@@ -461,7 +490,7 @@ const ContactPage = () => {
                       className="group inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-medium rounded-xl hover:shadow-lg transition-all"
                     >
                       <Send className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                      <span>Send Message</span>
+                      <span>{tContact?.form?.submitButton || 'Send Message'}</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                     </motion.button>
                   </div>
@@ -484,13 +513,22 @@ const ContactPage = () => {
                   <Clock className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 text-lg">Operating Hours</h3>
-                  <p className="text-gray-600 text-sm">When you can reach us</p>
+                  <h3 className="font-bold text-gray-900 text-lg">
+                    {tContact?.operatingHours?.title || 'Consultation Hours'}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {tContact?.operatingHours?.description || 'When you can reach me'}
+                  </p>
                 </div>
               </div>
               
               <div className="space-y-4">
-                {supportHours.map((hour, index) => (
+                {(tContact?.operatingHours?.hours || [
+                  { day: 'Monday - Friday', time: '8:00 AM - 8:00 PM', emergency: true },
+                  { day: 'Saturday', time: '9:00 AM - 5:00 PM', emergency: true },
+                  { day: 'Sunday', time: 'By Appointment Only', emergency: false },
+                  { day: '24/7', time: 'WhatsApp Emergency', emergency: true, highlight: true }
+                ]).map((hour, index) => (
                   <div
                     key={index}
                     className={`flex items-center justify-between p-3 rounded-xl ${
@@ -506,7 +544,9 @@ const ContactPage = () => {
                     {hour.emergency && (
                       <div className="flex items-center gap-1">
                         <Zap className="w-4 h-4 text-blue-500" />
-                        <span className="text-xs font-medium text-blue-600">Emergency</span>
+                        <span className="text-xs font-medium text-blue-600">
+                          {language === 'en' ? 'Emergency' : 'Acil'}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -514,155 +554,112 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Locations */}
-            <div className="bg-white rounded-xl md:rounded-2xl border border-gray-100 shadow-lg p-5 md:p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-lg">Our Locations</h3>
-                  <p className="text-gray-600 text-sm">Find us near you</p>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                {locations.map((location, index) => (
-                  <div key={index} className="p-4 bg-gradient-to-br from-blue-50/50 to-cyan-50/50 rounded-xl border border-blue-100">
-                    <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-gray-900">{location.name}</h4>
-                      <span className="px-2.5 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-full">
-                        {index === 0 ? 'Main' : 'Branch'}
-                      </span>
-                    </div>
-                    
-                    <div className="space-y-3">
-                      <div className="flex items-start gap-2">
-                        <MapPin className="w-4 h-4 text-blue-500 mt-1 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{location.address}</span>
-                      </div>
-                      
-                      <div className="flex items-center gap-2">
-                        <Phone className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{location.phone}</span>
-                      </div>
-                      
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{location.hours}</span>
-                      </div>
-                      
-                      <div className="flex flex-wrap gap-1.5 mt-2">
-                        {location.specialties.slice(0, 2).map((specialty, idx) => (
-                          <span
-                            key={idx}
-                            className="px-2 py-1 bg-white text-blue-700 text-xs font-medium rounded-lg"
-                          >
-                            {specialty}
-                          </span>
-                        ))}
-                        {location.specialties.length > 2 && (
-                          <span className="px-2 py-1 bg-white text-gray-600 text-xs font-medium rounded-lg">
-                            +{location.specialties.length - 2}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Appointment CTA */}
-            <div className="bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl md:rounded-2xl p-5 md:p-6 text-white shadow-lg overflow-hidden relative">
-              {/* Animated Background */}
-              <div className="absolute inset-0 opacity-10">
-                {Array.from({ length: 3 }).map((_, i) => (
-                  <motion.div
-                    key={i}
-                    animate={{
-                      y: [0, -20, 0],
-                      x: [0, Math.sin(i) * 10, 0],
-                    }}
-                    transition={{
-                      duration: 3 + i * 0.5,
-                      repeat: Infinity,
-                      delay: i * 0.3,
-                    }}
-                    className={`absolute w-12 h-12 border-2 border-white/20 rounded-full ${
-                      i === 0 ? 'top-4 left-4' :
-                      i === 1 ? 'bottom-4 right-4' :
-                      'top-1/2 left-1/2'
-                    }`}
-                  />
-                ))}
-              </div>
-              
-              <div className="relative z-10">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-7 h-7 text-white" />
+            {/* Hospital Location with Map */}
+            <div className="bg-white rounded-xl md:rounded-2xl border border-gray-100 shadow-lg overflow-hidden">
+              <div className="p-5 md:p-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Need Immediate Help?</h3>
-                    <p className="text-blue-100">
-                      Our medical team is available 24/7 for emergency consultations and appointments.
+                    <h3 className="font-bold text-gray-900 text-lg">
+                      {tContact?.location?.title || 'Hospital Location'}
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      {tContact?.location?.description || 'Find me at Acıbadem Kartal Hospital'}
                     </p>
                   </div>
                 </div>
                 
-                <Link
-                  to="/appointment"
-                  className="group w-full inline-flex items-center justify-center gap-3 px-6 py-3 bg-white text-blue-700 font-medium rounded-xl hover:bg-blue-50 transition-all"
-                >
-                  <Calendar className="w-5 h-5" />
-                  <span>Book Emergency Appointment</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                </Link>
+                {/* Map Container */}
+                <div className="mb-6">
+                  <div className="w-full h-48 rounded-xl overflow-hidden border border-gray-200">
+                    <iframe
+                      src={googleMapsEmbedUrl}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Acıbadem Kartal Hospital Location"
+                      className="w-full h-full"
+                    />
+                  </div>
+                  <div className="mt-3 flex justify-end">
+                    <a
+                      href={googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
+                    >
+                      <Navigation className="w-4 h-4" />
+                      {language === 'en' ? 'Open in Google Maps' : 'Google Haritalar\'da Aç'}
+                    </a>
+                  </div>
+                </div>
+                
+                {/* Location Details */}
+                <div className="p-4 bg-gradient-to-br from-blue-50/50 to-cyan-50/50 rounded-xl border border-blue-100">
+                  <div className="flex items-start justify-between mb-3">
+                    <h4 className="font-bold text-gray-900">
+                      {tContact?.location?.name || 'Acıbadem Kartal Hospital'}
+                    </h4>
+                    <span className="px-2.5 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-full">
+                      {language === 'en' ? 'Main Hospital' : 'Ana Hastane'}
+                    </span>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-2">
+                      <MapPin className="w-4 h-4 text-blue-500 mt-1 flex-shrink-0" />
+                      <span className="text-sm text-gray-700">
+                        {tContact?.location?.address || hospitalAddress}
+                      </span>
+                    </div>
+                    
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                      <span className="text-sm text-gray-700">
+                        {tContact?.location?.phone || '+90 553 418 6776 (WhatsApp only)'}
+                      </span>
+                    </div>
+                    
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                      <span className="text-sm text-gray-700">
+                        {tContact?.location?.hours || 'Mon-Fri: 8AM-8PM, Sat: 9AM-5PM'}
+                      </span>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-1.5 mt-2">
+                      {(tContact?.location?.specialties || ['Cardiology', 'Heart Care', 'Medical Consultation']).slice(0, 2).map((specialty, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-1 bg-white text-blue-700 text-xs font-medium rounded-lg"
+                        >
+                          {specialty}
+                        </span>
+                      ))}
+                      {tContact?.location?.specialties && tContact.location.specialties.length > 2 && (
+                        <span className="px-2 py-1 bg-white text-gray-600 text-xs font-medium rounded-lg">
+                          +{tContact.location.specialties.length - 2}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="bg-white rounded-xl md:rounded-2xl border border-gray-100 shadow-lg p-5 md:p-6">
-              <h3 className="font-bold text-gray-900 mb-4">Why Contact Us</h3>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-4 h-4 text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-900">HIPAA Secure</div>
-                    <div className="text-sm text-gray-600">100% encrypted communication</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Star className="w-4 h-4 text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-900">Expert Support</div>
-                    <div className="text-sm text-gray-600">Medical professionals available</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Zap className="w-4 h-4 text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-900">Fast Response</div>
-                    <div className="text-sm text-gray-600">Typically within 2 hours</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+
+
           </motion.div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ContactPage
+export default ContactPage;

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ArrowRight, Award, Bell, Calendar, CheckCircle, Clock, Clock as ClockIcon, Heart, Shield, ShieldCheck, Sparkles, Star, Stethoscope, TrendingUp, User, Users, Zap } from 'lucide-react'
+import { useState } from 'react'
 import AppointmentWizard from '../../components/appointment/AppointmentWizard'
-import { Calendar, Clock, User, Stethoscope, CheckCircle, Shield, Zap, TrendingUp, Sparkles, ArrowRight, Heart, Star, Award, Users, Bell, ShieldCheck, Clock as ClockIcon } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
 
 const AppointmentPage = () => {
   const [currentStep, setCurrentStep] = useState(1)
@@ -382,7 +382,7 @@ const AppointmentPage = () => {
                     whileHover={{ x: 4 }}
                     className="w-full flex items-center justify-between p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl hover:from-blue-100 hover:to-cyan-100 transition-all"
                   >
-                    <span className="font-medium text-blue-700">Call (123) 456-7890</span>
+                    <span className="font-medium text-blue-700">Call+90 553 418 6776</span>
                     <ArrowRight className="w-4 h-4 text-blue-600" />
                   </motion.button>
                   
