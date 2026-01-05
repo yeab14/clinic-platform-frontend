@@ -96,7 +96,7 @@ const About = () => {
   return (
     <section className="relative py-16 overflow-hidden bg-white">
       <div className="relative container-custom px-4">
-        {/* Section Header */}
+    
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -104,17 +104,15 @@ const About = () => {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full mb-6">
-            <Heart className="w-4 h-4 text-primary-600" />
+          
             <span className="text-sm font-medium text-primary-700">
               {language === 'tr' ? 'Uzman Kardiyolog' : 'Board Certified Cardiologist'}
             </span>
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            <span className="text-gray-900">{firstWord}</span>{' '}
-            <span className="text-primary-600">
-              {remainingWords}
-            </span>
+            <span className="text-gray-900">{firstWord} {remainingWords}</span>{' '}
+        
           </h1>
           
           <p className="text-xl text-gray-600">
