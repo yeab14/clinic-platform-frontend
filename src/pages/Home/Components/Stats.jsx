@@ -1,6 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
+
 import { motion } from 'framer-motion';
-import { Heart, Shield, Clock, Award, TrendingUp, Target, Calendar, FileText } from 'lucide-react';
+import {
+  Award,
+  Calendar,
+  Clock,
+  FileText,
+  Heart,
+  Shield,
+  TrendingUp,
+} from 'lucide-react';
+
 import { useLocale } from '@/providers/LocaleProvider';
 
 const Stats = () => {
@@ -152,8 +165,8 @@ const Stats = () => {
           })}
         </div>
 
-        {/* Comparison Section - Simplified */}
-        <motion.div
+      
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -174,7 +187,7 @@ const Stats = () => {
             }
           </p>
           
-          {/* Single comparison bar */}
+         
           <div className="space-y-4">
             <div className="flex justify-between text-sm">
               <span className="text-gray-600">{language === 'tr' ? 'Ortalama Başarı Oranı' : 'Average Success Rate'}</span>
@@ -224,10 +237,10 @@ const Stats = () => {
               </span>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
-        {/* Professional Summary - Compact */}
-        <motion.div
+   
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -266,7 +279,7 @@ const Stats = () => {
               : 'Providing cardiology services based on international guidelines since 2018'
             }
           </p>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

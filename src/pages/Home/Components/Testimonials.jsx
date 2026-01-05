@@ -1,22 +1,25 @@
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Star, 
-  Quote, 
-  Heart, 
-  Sparkles, 
-  ChevronLeft, 
-  ChevronRight, 
-  Award, 
-  CheckCircle, 
-  Users, 
-  Shield,
-  ThumbsUp,
-  Calendar,
-  Clock,
+import React, { useState } from 'react';
+
+import {
+  AnimatePresence,
+  motion,
+} from 'framer-motion';
+import {
   BadgeCheck,
-  MessageCircle
-} from 'lucide-react'
+  Calendar,
+  CheckCircle,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Heart,
+  MessageCircle,
+  Quote,
+  Shield,
+  Sparkles,
+  Star,
+  ThumbsUp,
+  Users,
+} from 'lucide-react';
 
 const Testimonials = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0)
@@ -461,7 +464,7 @@ const Testimonials = () => {
         </motion.div>
 
         {/* CTA */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -479,7 +482,7 @@ const Testimonials = () => {
               View All Testimonials
             </button>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )
