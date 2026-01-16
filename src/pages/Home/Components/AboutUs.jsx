@@ -14,7 +14,7 @@ const About = () => {
   return (
     <section className="py-12 bg-white">
       <div className="container-custom px-4">
-        {/* Header */}
+       
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full mb-4">
             <Heart className="w-4 h-4 text-primary-600" />
@@ -32,9 +32,9 @@ const About = () => {
           </p>
         </div>
 
-        {/* Main Content */}
+       
         <div className="max-w-2xl mx-auto">
-          {/* Biography */}
+   
           <div className="mb-8">
             <p className="text-gray-700 mb-4">
               {language === 'tr' 
@@ -44,7 +44,7 @@ const About = () => {
             </p>
           </div>
 
-          {/* Education */}
+       
           <div className="mb-8">
             <div className="flex items-center gap-2 mb-4">
               <GraduationCap className="w-5 h-5 text-primary-600" />
@@ -74,7 +74,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Memberships */}
+      
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Award className="w-5 h-5 text-primary-600" />

@@ -35,7 +35,7 @@ const BlogPage = () => {
     { id: 'lifestyle', label: language === 'tr' ? 'Yaşam Tarzı' : 'Lifestyle', count: 0 }
   ];
 
-  // Sample blog articles with comprehensive data
+
   const blogArticles = [
     {
       id: 1,
@@ -109,7 +109,7 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50/20 to-white">
       <div className="relative container-custom px-4 py-8 md:py-12">
-        {/* Header */}
+     
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,7 +135,7 @@ const BlogPage = () => {
           </p>
         </motion.div>
 
-        {/* Categories */}
+       
         <div className="mb-8 md:mb-12">
           <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-4">
             {categories.map((category) => (
@@ -172,7 +172,7 @@ const BlogPage = () => {
           </div>
         </div>
 
-        {/* Articles Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
           {filteredArticles.map((article, index) => (
             <motion.article
@@ -183,7 +183,7 @@ const BlogPage = () => {
               whileHover={{ y: -5 }}
               className="group bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
             >
-              {/* Article Image */}
+            
               <div className="h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
                 <img
                   src={article.imageUrl}
@@ -193,7 +193,7 @@ const BlogPage = () => {
               </div>
               
               <div className="p-6">
-                {/* Category & Meta */}
+               
                 <div className="flex items-center justify-between mb-4">
                   <div className="inline-flex items-center gap-2">
                     <div className={`px-3 py-1 text-xs font-medium rounded-full ${
@@ -211,19 +211,19 @@ const BlogPage = () => {
                   </div>
                 </div>
                 
-                {/* Title */}
+               
                 <Link to={`/blog/${article.slug}`}>
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
                     {article.title}
                   </h3>
                 </Link>
                 
-                {/* Excerpt */}
+               
                 <p className="text-gray-600 mb-6 line-clamp-3">
                   {article.excerpt}
                 </p>
                 
-                {/* Meta Info */}
+             
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
@@ -244,7 +244,7 @@ const BlogPage = () => {
                   </Link>
                 </div>
                 
-                {/* Tags */}
+              
                 <div className="mt-4 pt-4 border-t border-gray-100">
                   <div className="flex flex-wrap gap-2">
                     {article.tags.slice(0, 3).map((tag, tagIndex) => (
@@ -263,7 +263,7 @@ const BlogPage = () => {
           ))}
         </div>
 
-        {/* Newsletter Subscription */}
+      
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

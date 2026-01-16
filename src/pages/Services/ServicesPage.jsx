@@ -183,7 +183,7 @@ const ServicesPage = () => {
   return (
     <section className="relative py-16 overflow-hidden bg-white">
       <div className="relative container-custom px-4">
-        {/* Section Header */}
+       
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-6">
             <span className="text-sm font-medium text-blue-700">
@@ -200,7 +200,7 @@ const ServicesPage = () => {
           </p>
         </div>
 
-        {/* Category Tabs */}
+      
         <div className="flex justify-center mb-8">
           <div className="inline-flex bg-gray-100 rounded-xl p-1">
             {categories.map(category => (
@@ -219,7 +219,7 @@ const ServicesPage = () => {
           </div>
         </div>
 
-        {/* Services Grid */}
+      
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {currentServices.map((service, index) => (
             <motion.div
@@ -245,7 +245,7 @@ const ServicesPage = () => {
           ))}
         </div>
 
-        {/* Advanced Services Note */}
+    
         {activeCategory === 'advanced' && (
           <div className="mt-8 text-center text-gray-600 text-sm max-w-2xl mx-auto">
             {language === 'tr' 
@@ -255,7 +255,7 @@ const ServicesPage = () => {
           </div>
         )}
 
-        {/* Service Detail Modal */}
+
         <AnimatePresence>
           {selectedService && (
             <motion.div

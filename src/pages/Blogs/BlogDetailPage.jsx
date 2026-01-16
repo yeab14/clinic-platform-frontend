@@ -36,7 +36,7 @@ const BlogDetailPage = () => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
 
-  // Mock data - in production, fetch from API
+ 
   const allArticles = [
     {
       id: 1,
@@ -265,7 +265,7 @@ const BlogDetailPage = () => {
           });
         } else {
           navigator.clipboard.writeText(url);
-          // You could add a toast notification here
+     
           alert(language === 'tr' ? 'Bağlantı kopyalandı!' : 'Link copied!');
         }
     }
@@ -300,13 +300,13 @@ const BlogDetailPage = () => {
 
       <div className="container-custom px-4 py-8 md:py-12">
         <div className="max-w-4xl mx-auto">
-          {/* Article Header */}
+         
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8 md:mb-12"
           >
-            {/* Category */}
+ 
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-6">
               <FileText className="w-4 h-4 text-blue-700" />
               <span className="text-sm font-medium text-blue-700">
@@ -317,12 +317,11 @@ const BlogDetailPage = () => {
               </span>
             </div>
             
-            {/* Title */}
+        
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               {article.title}
             </h1>
-            
-            {/* Meta Info */}
+        
             <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-8">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">

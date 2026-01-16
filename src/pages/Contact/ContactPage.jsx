@@ -90,13 +90,13 @@ const ContactPage = () => {
           </p>
         </motion.div>
 
-        {/* Main Content */}
+   
         <div className="grid lg:grid-cols-3 gap-6 md:gap-8">
-          {/* Left Column: Contact Form */}
+     
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
               <div className="p-6">
-                {/* Success Message */}
+            
                 <AnimatePresence>
                   {isSubmitted && (
                     <motion.div
@@ -244,9 +244,9 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Right Column: Contact Info & Map */}
+         
           <div className="space-y-6">
-            {/* Contact Information Card */}
+   
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -296,7 +296,7 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Map */}
+       
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
@@ -342,7 +342,7 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Working Hours */}
+         
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">

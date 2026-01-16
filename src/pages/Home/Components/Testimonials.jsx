@@ -71,7 +71,7 @@ const Testimonials = () => {
   return (
     <section className="py-16 bg-gradient-to-b from-white via-blue-50/20 to-white">
       <div className="container-custom px-4">
-        {/* Header */}
+      
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full mb-6">
             <span className="text-sm font-medium text-blue-700">
@@ -91,10 +91,10 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Testimonial Carousel */}
+      
         <div className="max-w-3xl mx-auto">
           <div className="relative">
-            {/* Main Testimonial Card */}
+        
             <motion.div
               key={activeTestimonial}
               initial={{ opacity: 0, x: 20 }}
@@ -103,19 +103,19 @@ const Testimonials = () => {
               transition={{ duration: 0.3 }}
               className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-all"
             >
-              {/* Quote Icon */}
+             
               <div className="flex justify-center mb-4">
                 <Quote className="w-8 h-8 text-blue-200" />
               </div>
               
-              {/* Content */}
+             
               <div className="mb-6">
                 <p className="text-gray-700 text-center italic">
                   "{testimonials[activeTestimonial].content}"
                 </p>
               </div>
               
-              {/* Rating */}
+           
               <div className="flex justify-center mb-4">
                 <div className="flex items-center gap-1">
                   {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
@@ -124,7 +124,7 @@ const Testimonials = () => {
                 </div>
               </div>
               
-              {/* Patient Info */}
+          
               <div className="text-center">
                 <div className="font-medium text-gray-900">
                   {testimonials[activeTestimonial].name}
@@ -135,7 +135,7 @@ const Testimonials = () => {
               </div>
             </motion.div>
 
-            {/* Navigation */}
+          
             <div className="flex items-center justify-center gap-4 mt-8">
               <button
                 onClick={prevTestimonial}
@@ -168,7 +168,7 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Additional Note */}
+        
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-600">
             {language === 'tr' 

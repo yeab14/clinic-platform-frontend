@@ -20,7 +20,7 @@ const Stats = () => {
   const { content, language } = useLocale();
   const [activeStat, setActiveStat] = useState(0);
   
-  // Core statistics - reduced from 16+ numbers to 4 key metrics
+
   const keyStats = [
     { 
       icon: Heart, 
@@ -52,7 +52,7 @@ const Stats = () => {
     },
   ];
 
-  // Professional summary - compact version
+ 
   const summaryStats = [
     { 
       value: "6+", 

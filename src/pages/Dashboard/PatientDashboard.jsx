@@ -1,7 +1,18 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Calendar, FileText, User, Settings, Bell, Activity, CreditCard, Download } from 'lucide-react'
-import { useAuth } from '../../context/AuthContext'
+import React from 'react';
+
+import { motion } from 'framer-motion';
+import {
+  Activity,
+  Bell,
+  Calendar,
+  CreditCard,
+  Download,
+  FileText,
+  Settings,
+  User,
+} from 'lucide-react';
+
+import { useAuth } from '../../context/AuthContext';
 
 const PatientDashboard = () => {
   const { user } = useAuth()
@@ -38,7 +49,7 @@ const PatientDashboard = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Column - Profile & Stats */}
+
           <div className="lg:col-span-2 space-y-8">
 
             <motion.div
@@ -73,7 +84,7 @@ const PatientDashboard = () => {
               </div>
             </motion.div>
 
-            {/* Upcoming Appointments */}
+           
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -113,7 +124,7 @@ const PatientDashboard = () => {
               </div>
             </motion.div>
 
-            {/* Medical Records */}
+           
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -143,9 +154,9 @@ const PatientDashboard = () => {
             </motion.div>
           </div>
 
-          {/* Right Column - Quick Actions */}
+        
           <div className="space-y-8">
-            {/* Quick Actions */}
+          
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -174,7 +185,7 @@ const PatientDashboard = () => {
               </div>
             </motion.div>
 
-            {/* Health Tips */}
+          
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -190,7 +201,7 @@ const PatientDashboard = () => {
               </button>
             </motion.div>
 
-            {/* Recent Activity */}
+         
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}

@@ -69,7 +69,7 @@ const Services = () => {
   return (
     <section className="py-16 bg-gradient-to-b from-white via-blue-50/20 to-white">
       <div className="container-custom px-4">
-        {/* Header */}
+      
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full mb-6">
             <span className="text-sm font-medium text-blue-700">
@@ -86,7 +86,7 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Category Tabs */}
+      
         <div className="flex justify-center mb-8">
           <div className="inline-flex bg-gray-100 rounded-xl p-1">
             {categories.map(category => (
@@ -107,7 +107,7 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Services Grid */}
+    
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
           {currentServices.map((service, index) => (
             <motion.div
@@ -160,7 +160,7 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Advanced Services Note */}
+    
         {activeCategory === 'advanced' && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
