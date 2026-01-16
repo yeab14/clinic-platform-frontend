@@ -110,7 +110,7 @@ const AppointmentPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50/20 to-white">
       <div className="relative container-custom px-4 py-8 md:py-12">
-        {/* Header */}
+       
         <div className="text-center mb-8 md:mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-4">
           
@@ -131,7 +131,7 @@ const AppointmentPage = () => {
           </p>
         </div>
 
-        {/* Success Message */}
+    
         {isSubmitted && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -158,7 +158,7 @@ const AppointmentPage = () => {
         )}
 
         <div className="grid lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-          {/* Left: Appointment Form */}
+         
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
               <div className="p-6">
@@ -177,7 +177,7 @@ const AppointmentPage = () => {
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Services Selection */}
+                 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-3">
                       {language === 'tr' ? 'Hizmet Seçimi *' : 'Service Selection *'}
@@ -224,7 +224,7 @@ const AppointmentPage = () => {
                     </div>
                   </div>
 
-                  {/* Date and Time Selection */}
+                 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -263,7 +263,7 @@ const AppointmentPage = () => {
                     </div>
                   </div>
 
-                  {/* Personal Information */}
+             
                   <div>
                   <h2 className="text-xl font-bold text-gray-900 mb-4">
                       {language === 'tr' ? 'Kişisel Bilgiler' : 'Personal Information'}
@@ -332,7 +332,7 @@ const AppointmentPage = () => {
                     </div>
                   </div>
 
-                  {/* Submit Button */}
+                
                   <div className="pt-6 border-t border-gray-200">
                     <button
                       type="submit"
@@ -347,9 +347,9 @@ const AppointmentPage = () => {
             </div>
           </div>
 
-          {/* Right: Contact & Info */}
+          
           <div className="space-y-6">
-            {/* Contact Card */}
+          
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -384,7 +384,7 @@ const AppointmentPage = () => {
               </div>
             </div>
 
-            {/* Working Hours */}
+    
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -416,7 +416,7 @@ const AppointmentPage = () => {
               </div>
             </div>
 
-            {/* Location */}
+            
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -440,7 +440,7 @@ const AppointmentPage = () => {
               </div>
             </div>
 
-            {/* Security Note */}
+           
             <div className="bg-blue-50 rounded-xl border border-blue-200 p-6">
               <div className="flex items-center gap-3 mb-3">
                 <Shield className="w-5 h-5 text-blue-600" />
