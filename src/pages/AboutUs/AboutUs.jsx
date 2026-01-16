@@ -73,22 +73,23 @@ const About = () => {
 
   const education = [
     {
-      year: language === 'tr' ? '2018-2023' : '2018-2023',
-      title: language === 'tr' ? 'Tıpta Uzmanlık' : 'Medical Specialty',
-      institution: language === 'tr' ? 'Marmara Üniversitesi Tıp Fakültesi, Kardiyoloji' : 'Marmara University, Faculty of Medicine, Cardiology',
+      year: '2018-2023',
+      title: language === 'tr' ? 'Tıpta Uzmanlık (Kardiyoloji)' : 'Medical Specialty in Cardiology',
+      institution: language === 'tr' ? 'Marmara Üniversitesi Tıp Fakültesi, İstanbul' : 'Marmara University, Faculty of Medicine, Istanbul',
     },
     {
-      year: language === 'tr' ? '2012-2018' : '2012-2018',
-      title: language === 'tr' ? 'Tıp Fakültesi' : 'Medical School',
-      institution: language === 'tr' ? 'Ondokuz Mayıs Üniversitesi' : 'Ondokuz Mayıs University',
+      year: '2012-2018',
+      title: language === 'tr' ? 'Tıp Fakültesi' : 'Medical Degree',
+      institution: language === 'tr' ? 'Ondokuz Mayıs Üniversitesi Tıp Fakültesi, Samsun' : 'Ondokuz Mayıs University, Faculty of Medicine, Samsun',
     }
   ];
+  
 
   const memberships = [
-    language === 'tr' ? 'Türk Kardiyoloji Derneği' : 'Turkish Society of Cardiology',
-    language === 'tr' ? 'Türk Tabipleri Birliği' : 'Turkish Medical Association',
+    language === 'tr' ? 'Türk Kardiyoloji Derneği (TKD)' : 'Turkish Society of Cardiology (TKD)',
+    language === 'tr' ? 'Avrupa Kardiyoloji Derneği (ESC)' : 'European Society of Cardiology (ESC)',
   ];
-
+  
   const titleParts = aboutContent.title.split(' ');
   const firstWord = titleParts[0];
   const remainingWords = titleParts.slice(1).join(' ');
@@ -105,9 +106,9 @@ const About = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full mb-6">
           
-            <span className="text-sm font-medium text-primary-700">
+            {/* <span className="text-sm font-medium text-primary-700">
               {language === 'tr' ? 'Uzman Kardiyolog' : 'Board Certified Cardiologist'}
-            </span>
+            </span> */}
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

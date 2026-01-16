@@ -57,15 +57,18 @@ export default function Header() {
 
 
   const getCommon = (key) => {
-  const commons = {
-    openHours: 'Mon-Fri: 8AM-8PM',
-    address: 'Kartal, İstanbul',
-    Whatsapp: 'WhatsApp',
-    logoSubtitle: 'Cardiology Specialist',
-    bookNow: 'Book Now',
-    emergency: 'Emergency',
-  };
-  return commons[key] || key;
+    const commons = {
+      openHours: 'Mon-Fri: 8AM-8PM',
+      address: 'Acıbadem Kartal Hospital\nÇavuşoğlu, Sanayi Cd. No:1, 34873 Kartal / Istanbul, Türkiye',
+      Whatsapp: 'WhatsApp',
+      logoSubtitle: 'Cardiology Specialist',
+      bookNow: 'Book Now',
+      emergency: 'Emergency',
+    };
+    
+    return commons[key] || key;
+    
+
 };
 
   

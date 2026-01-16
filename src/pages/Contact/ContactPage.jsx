@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import {
   AnimatePresence,
@@ -57,7 +57,7 @@ const ContactPage = () => {
 
   const contactInfo = {
     whatsapp: '+90 553 418 6776',
-    email: 'redwan.busery@acibadem.com',
+    email: 'info@redwanbusery.com',
     address: hospitalAddress,
     hospital: language === 'tr' ? 'Acıbadem Kartal Hastanesi' : 'Acıbadem Kartal Hospital'
   };
@@ -293,13 +293,6 @@ const ContactPage = () => {
                   </div>
                 </a>
                 
-                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                  <MapPin className="w-5 h-5 text-gray-600" />
-                  <div>
-                    <div className="font-medium text-gray-900">{contactInfo.hospital}</div>
-                    <div className="text-gray-700 text-sm">{contactInfo.address}</div>
-                  </div>
-                </div>
               </div>
             </div>
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { motion } from 'framer-motion';
 import {
   ArrowUp,
@@ -54,7 +52,7 @@ const Footer = () => {
             
             <div className="flex items-center gap-3">
               <a
-                href="https://linkedin.com/in/redwan-seid-busery-cardiyology"
+                href="https://www.linkedin.com/in/redwan-seid-busery-cardiology/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-blue-900/20 rounded-lg flex items-center justify-center hover:bg-blue-900/30 transition-colors"
@@ -109,10 +107,10 @@ const Footer = () => {
                 </div>
                 <div>
                   <a
-                    href="mailto:redwan.busery@acibadem.com"
+                    href="mailto:info@redwanbusery.com"
                     className="text-sm font-semibold text-white hover:text-cyan-300 transition-colors"
                   >
-                    redwan.busery@acibadem.com
+                    info@redwanbusery.com
                   </a>
                 </div>
               </div>

@@ -1,5 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
+
+import {
+  motion,
+  useAnimation,
+} from 'framer-motion';
 import {
   Activity,
   ArrowRight,
@@ -14,11 +21,11 @@ import {
   Star,
   Stethoscope,
   Users,
-  CheckCircle,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useLocale } from '@/providers/LocaleProvider';
+
 import doctorImg from '@/assets/images/Dr2.png';
+import { useLocale } from '@/providers/LocaleProvider';
 
 const Hero = () => {
   const [currentStat, setCurrentStat] = useState(0);
@@ -135,7 +142,7 @@ const Hero = () => {
             className="relative z-10"
           >
          
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
@@ -161,7 +168,7 @@ const Hero = () => {
                   <Sparkles className="w-4 h-4 text-primary-400 ml-1 animate-pulse" />
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
 
          
             <div className="mb-6">
@@ -199,7 +206,7 @@ const Hero = () => {
                   <div className="flex items-center gap-2 mt-1">
                     <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
                     <span className="text-base text-gray-600 font-medium">
-                      {language === 'tr' ? 'Avicenna Umut Hastanesi' : 'Avicenna Umut Hospital'}
+                      {language === 'tr' ? 'Acıbadem Kartal Hospital' : 'Acıbadem Kartal Hospital'}
                     </span>
                   </div>
                 </div>
@@ -286,7 +293,7 @@ const Hero = () => {
             </motion.div>
 
            
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.65 }}
@@ -311,7 +318,7 @@ const Hero = () => {
                   <div className="text-xs text-gray-600">European Society</div>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Right Column - Clean Image Section */}

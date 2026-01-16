@@ -16,15 +16,17 @@ import {
   AuthProvider,
   useAuth,
 } from './context/AuthContext';
+import About from './pages/AboutUs/AboutUs';
 import AppointmentPage from './pages/Appointment/AppointmentPage';
-import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+import BlogPage from './pages/Blogs/Blog';
+import BlogDetailPage from './pages/Blogs/BlogDetailPage';
 import ContactPage from './pages/Contact/ContactPage';
 import PatientDashboard from './pages/Dashboard/PatientDashboard';
 import DoctorsPage from './pages/Doctors/DoctorsPage';
 import HomePage from './pages/Home/HomePage';
 import ServicesPage from './pages/Services/ServicesPage';
-import About from './pages/AboutUs/AboutUs'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation()
@@ -58,24 +60,27 @@ const AppContent = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow mt-4">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/doctors" element={<DoctorsPage />} />
-          <Route path="/appointment" element={<AppointmentPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
-          <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
-          <Route 
-            path="/dashboard" 
-            element={
-              <ProtectedRoute>
-                <PatientDashboard />
-              </ProtectedRoute>
-            } 
-          />
-        </Routes>
+      <Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/about" element={<About />} />
+  <Route path="/services" element={<ServicesPage />} />
+  <Route path="/doctors" element={<DoctorsPage />} />
+  <Route path="/blog" element={<BlogPage />} />
+  <Route path="/blog/:slug" element={<BlogDetailPage />} />
+  <Route path="/appointment" element={<AppointmentPage />} />
+  <Route path="/contact" element={<ContactPage />} />
+  <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
+  <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
+  <Route 
+    path="/dashboard" 
+    element={
+      <ProtectedRoute>
+        <PatientDashboard />
+      </ProtectedRoute>
+    } 
+  />
+</Routes>
+
       </main>
       <Footer />
     </div>

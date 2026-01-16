@@ -2,18 +2,19 @@ import React from 'react';
 
 import Services from '@/pages/Home/components/Services.jsx';
 import Hero from '@pages/Home/components/Hero.jsx';
-import Stats from '@pages/Home/components/Stats.jsx';
-import Testimonials from '@pages/Home/components/Testimonials.jsx';
+
+import BlogPage from '../Blogs/Blog';
 
 const HomePage = () => {
   return (
     <div className="overflow-hidden">
       <Hero />
-      <Stats />
+      {/* <Stats /> */}
       {/* <About /> */}
       <Services />
+      <BlogPage />
       {/* <DoctorsPreview /> */}
-      <Testimonials />
+      {/* <Testimonials /> */}
       {/* <AppointmentCTA /> */}
     </div>
   )

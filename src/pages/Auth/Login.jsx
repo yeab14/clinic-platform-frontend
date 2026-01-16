@@ -1,8 +1,22 @@
-import React, { useState } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { LogIn, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle } from 'lucide-react'
-import { useAuth } from '../../context/AuthContext'
+import React, { useState } from 'react';
+
+import { motion } from 'framer-motion';
+import {
+  AlertCircle,
+  CheckCircle,
+  Eye,
+  EyeOff,
+  Lock,
+  LogIn,
+  Mail,
+} from 'lucide-react';
+import {
+  Link,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -16,7 +30,7 @@ const Login = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // If already authenticated, redirect to home
+
   React.useEffect(() => {
     if (isAuthenticated) {
       navigate('/')
