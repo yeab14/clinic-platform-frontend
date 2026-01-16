@@ -1,7 +1,21 @@
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { Calendar, Clock, Phone, ArrowRight, Sparkles, Shield, Users, CheckCircle, Zap, Heart, Star, ChevronRight } from 'lucide-react'
+import React, { useState } from 'react';
+
+import { motion } from 'framer-motion';
+import {
+  ArrowRight,
+  Calendar,
+  CheckCircle,
+  ChevronRight,
+  Clock,
+  Heart,
+  Phone,
+  Shield,
+  Sparkles,
+  Star,
+  Users,
+  Zap,
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const AppointmentCTA = () => {
   const [isHovered, setIsHovered] = useState(false)

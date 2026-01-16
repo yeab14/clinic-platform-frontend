@@ -14,7 +14,7 @@ import {
   Heart,
   MapPin,
   Menu,
-  Phone,
+  MessageCircle,
   Shield,
   Stethoscope,
   X,
@@ -225,9 +225,9 @@ export default function Header() {
               </div>
 
               <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
-                <div className="relative">
+                {/* <div className="relative">
                   <LanguageSelector variant="mobile-icon" />
-                </div>
+                </div> */}
 
                 <motion.button
                   whileTap={{ scale: 0.95 }}
@@ -313,17 +313,25 @@ export default function Header() {
                 </div>
 
                 <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-3 sm:p-4 border border-primary-100">
-                  <div className="flex items-center gap-2.5 sm:gap-3">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 flex items-center justify-center">
-                      <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-medium text-gray-500">{getCommon('emergency')}</p>
-                      <a className="text-base sm:text-lg font-bold text-gray-800">(123) 456-7890</a>
-                    </div>
-                  </div>
-                </div>
-
+  <div className="flex items-center gap-2.5 sm:gap-3">
+    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center">
+      <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+    </div>
+    <div>
+      <p className="text-xs font-medium text-gray-500">
+        {language === 'tr' ? 'WhatsApp Destek' : 'WhatsApp Support'}
+      </p>
+      <a 
+        href="https://wa.me/905534186776"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-base sm:text-lg font-bold text-gray-800 hover:text-green-700 transition-colors"
+      >
+        +90 553 418 6776
+      </a>
+    </div>
+  </div>
+</div>
                 <Link
                   to="/appointment"
                   onClick={() => setIsMenuOpen(false)}

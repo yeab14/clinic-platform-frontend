@@ -27,7 +27,7 @@ const FLAG_IMAGES = {
   };
   
   export const LanguageSelector = ({ variant = 'desktop', className = '' }) => {
-    const { language, languages, changeLanguage, getCommon } = useLocale();
+    const { language, languages, changeLanguage } = useLocale();
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const dropdownRef = useRef(null);
@@ -123,11 +123,11 @@ const FLAG_IMAGES = {
                     <div className="flex items-center gap-2">
                       <Globe className="w-4 h-4 text-primary-600" />
                       <h3 className="text-sm font-semibold text-gray-700">
-                        {getCommon('selectLanguage')}
+                        {language === 'tr' ? 'Dil Seçin' : 'Select Language'}
                       </h3>
                     </div>
                     <p className="text-xs text-gray-500 mt-1">
-                      {getCommon('languageDescription')}
+                      {language === 'tr' ? 'Web sitesi dilini değiştirin' : 'Change website language'}
                     </p>
                   </div>
                   
@@ -218,7 +218,7 @@ const FLAG_IMAGES = {
                 <div className="relative bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
                   <div className="p-4 border-b border-gray-100">
                     <h3 className="text-sm font-semibold text-gray-700">
-                      {getCommon('selectLanguage')}
+                      {language === 'tr' ? 'Dil Seçin' : 'Select Language'}
                     </h3>
                   </div>
                   
@@ -258,7 +258,7 @@ const FLAG_IMAGES = {
           <div className="flex items-center gap-2 mb-4">
             <Globe className="w-5 h-5 text-primary-600" />
             <h3 className="text-lg font-bold text-gray-800">
-              {getCommon('mobileMenu.languageSettings')}
+              {language === 'tr' ? 'Dil Seçenekleri' : 'Language Options'}
             </h3>
           </div>
           
@@ -309,7 +309,7 @@ const FLAG_IMAGES = {
           
           <div className="mt-4 pt-4 border-t border-gray-200">
             <p className="text-xs text-gray-500 text-center">
-              {getCommon('mobileMenu.languagePreferenceSaved')}
+              {language === 'tr' ? 'Dil tercihiniz kaydedildi' : 'Your language preference has been saved'}
             </p>
           </div>
         </div>
