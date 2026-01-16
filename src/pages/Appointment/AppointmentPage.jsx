@@ -103,7 +103,7 @@ const AppointmentPage = () => {
       `\n*Time:* ${selectedTime}` +
       `\n*Note:* ${formData.message}`;
 
-    const phoneNumber = '985235917'; 
+    const phoneNumber = '905534186776'; 
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
     window.open(url, '_blank');
