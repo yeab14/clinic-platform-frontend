@@ -116,7 +116,6 @@ const BlogPage = () => {
           className="text-center mb-8 md:mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-4">
-            <FileText className="w-4 h-4 text-blue-700" />
             <span className="text-sm font-medium text-blue-700">
               {language === 'tr' ? 'Bilimsel İçerik' : 'Scientific Content'}
             </span>

@@ -163,12 +163,7 @@ const Footer = () => {
               >
                 {language === 'tr' ? 'Şartlar' : 'Terms'}
               </Link>
-              <Link
-                to="/sitemap"
-                className="text-sm text-blue-300 hover:text-white transition-colors"
-              >
-                {language === 'tr' ? 'Site Haritası' : 'Sitemap'}
-              </Link>
+
             </div>
           </div>
         </div>
