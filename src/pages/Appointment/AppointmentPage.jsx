@@ -92,6 +92,22 @@ const AppointmentPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const serviceName = services.find(s => s.id === selectedService)?.name || 'Not Selected';
+    const whatsappMessage = 
+      `*New Appointment Request*` +
+      `\n\n*Patient:* ${formData.name}` +
+      `\n*Email:* ${formData.email}` +
+      `\n*Phone:* ${formData.phone}` +
+      `\n*Service:* ${serviceName}` +
+      `\n*Date:* ${selectedDate}` +
+      `\n*Time:* ${selectedTime}` +
+      `\n*Note:* ${formData.message}`;
+
+    const phoneNumber = '905534186776'; 
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(url, '_blank');
+
     setTimeout(() => {
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', message: '' });
@@ -334,6 +350,14 @@ const AppointmentPage = () => {
 
                 
                   <div className="pt-6 border-t border-gray-200">
+                     {/* Auto-reply Note Display */}
+                     <div className="mb-4 p-3 bg-amber-50 border-l-4 border-amber-400 text-xs md:text-sm text-amber-800">
+                      <p className="font-medium">
+                        {language === 'tr' 
+                        ? 'Bu form randevu talebi içindir. Kesin randevu bilgisi değerlendirme sonrası iletilecektir.' 
+                        : 'This form is for appointment requests only. Confirmation will be provided after review.'}
+                      </p>
+                      </div>
                     <button
                       type="submit"
                       disabled={!selectedService || !selectedDate || !selectedTime}

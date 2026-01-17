@@ -27,6 +27,8 @@ import PatientDashboard from './pages/Dashboard/PatientDashboard';
 import DoctorsPage from './pages/Doctors/DoctorsPage';
 import HomePage from './pages/Home/HomePage';
 import ServicesPage from './pages/Services/ServicesPage';
+import Privacy from './pages/Privacy/privacy';
+import Terms from './pages/Terms/terms';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation()
@@ -71,6 +73,8 @@ const AppContent = () => {
   <Route path="/contact" element={<ContactPage />} />
   <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
   <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
+  <Route path="/privacy" element={<Privacy />} />
+  <Route path="/terms" element={<Terms />} />
   <Route 
     path="/dashboard" 
     element={
