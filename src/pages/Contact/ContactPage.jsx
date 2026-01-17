@@ -29,11 +29,10 @@ const ContactPage = () => {
     subject: '',
     message: '',
   });
-  const [status, setStatus] = useState('idle'); // Options: 'idle', 'sending', 'success', 'error'
+  const [status, setStatus] = useState('idle');
 
   const hospitalAddress = "Çavuşoğlu, Sanayi Cd. No:1, 34873 Kartal/İstanbul";
   const encodedAddress = encodeURIComponent(hospitalAddress);
-  const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${encodedAddress}`;
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
 
   const handleSubmit = async (e) => {
@@ -82,7 +81,6 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50/20 to-white">
       <div className="relative container-custom px-4 py-8 md:py-12">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -325,29 +323,36 @@ const ContactPage = () => {
                 </div>
 
                 <div className="mb-4">
-                  <div className="w-full h-48 rounded-lg overflow-hidden border border-gray-300">
-                    <iframe
-                      src={googleMapsEmbedUrl}
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="Acıbadem Kartal Hospital Location"
-                      className="w-full h-full"
-                    />
+                  <div className="w-full h-48 rounded-lg overflow-hidden border border-gray-300 bg-gray-100">
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <MapPin className="w-6 h-6 text-white" />
+                      </div>
+                      <p className="text-gray-700 font-medium mb-2">
+                        {contactInfo.hospital}
+                      </p>
+                      <p className="text-gray-600 text-sm text-center px-4">
+                        {hospitalAddress}
+                      </p>
+                      <div className="mt-6">
+                        <a
+                          href={googleMapsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                        >
+                          <Navigation className="w-4 h-4" />
+                          {language === 'en' ? 'Open in Google Maps' : 'Google Haritalar\'da Aç'}
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-3 flex justify-end">
-                    <a
-                      href={googleMapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
-                    >
-                      <Navigation className="w-4 h-4" />
-                      {language === 'en' ? 'Open in Maps' : 'Haritada Aç'}
-                    </a>
+                  <div className="mt-3 text-center">
+                    <p className="text-sm text-gray-500">
+                      {language === 'en' 
+                        ? 'Click above to view location in Google Maps'
+                        : 'Konumu Google Haritalar\'da görüntülemek için tıklayın'}
+                    </p>
                   </div>
                 </div>
               </div>

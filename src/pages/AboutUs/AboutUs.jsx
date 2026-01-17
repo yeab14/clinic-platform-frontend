@@ -3,13 +3,19 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Activity,
+  Activity as ActivityIcon,
   Award,
   Brain,
   CheckCircle,
   GraduationCap,
   Heart,
+  Heart as HeartIcon,
+  Shield,
   Stethoscope,
+  Target,
+  TrendingUp,
   Users,
+  Zap,
 } from 'lucide-react';
 
 import { useLocale } from '@/providers/LocaleProvider';
@@ -31,6 +37,65 @@ const About = () => {
         : "I manage cardiovascular diseases across different stages, from early detection and risk evaluation to treatment optimization and continuity of care.",
     ],
   };
+
+  const clinicalInterests = [
+    {
+      icon: HeartIcon,
+      title: language === "tr" ? "Kalp yetmezliği" : "Heart failure",
+      description: language === "tr" 
+        ? "Akut ve kronik kalp yetmezliği yönetimi"
+        : "Acute and chronic heart failure management"
+    },
+    {
+      icon: ActivityIcon,
+      title: language === "tr" ? "Koroner arter hastalığı" : "Coronary artery disease",
+      description: language === "tr"
+        ? "Tanı, stentleme ve medikal tedavi"
+        : "Diagnosis, stenting and medical therapy"
+    },
+    {
+      icon: Zap,
+      title: language === "tr" ? "Ritim bozuklukları" : "Arrhythmias",
+      description: language === "tr"
+        ? "Aritmi tanı ve tedavisi"
+        : "Arrhythmia diagnosis and treatment"
+    },
+    {
+      icon: TrendingUp,
+      title: language === "tr" ? "Hipertansiyon" : "Hypertension",
+      description: language === "tr"
+        ? "Kan basıncı kontrolü ve yönetimi"
+        : "Blood pressure control and management"
+    },
+    {
+      icon: Shield,
+      title: language === "tr" ? "Kapak hastalıkları" : "Valvular heart disease",
+      description: language === "tr"
+        ? "Kapak hastalıkları tanı ve takibi"
+        : "Valvular disease diagnosis and follow-up"
+    },
+    {
+      icon: Target,
+      title: language === "tr" ? "Aort ve periferik damar hastalıkları" : "Aortic and peripheral vascular diseases",
+      description: language === "tr"
+        ? "Vasküler hastalıkların yönetimi"
+        : "Vascular disease management"
+    },
+    {
+      icon: Activity,
+      title: language === "tr" ? "Pulmoner hipertansiyon" : "Pulmonary hypertension",
+      description: language === "tr"
+        ? "Akciğer damar basıncı bozuklukları"
+        : "Pulmonary vascular pressure disorders"
+    },
+    {
+      icon: Brain,
+      title: language === "tr" ? "Koruyucu kardiyoloji ve kardiyovasküler risk değerlendirmesi" : "Preventive cardiology and cardiovascular risk assessment",
+      description: language === "tr"
+        ? "Risk faktörü yönetimi ve koruyucu tedaviler"
+        : "Risk factor management and preventive therapies"
+    },
+  ];
 
   const sections = [
     {
@@ -126,31 +191,28 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-6">
             <span className="text-sm font-medium text-blue-700">
-                {language === "tr" ? "Hakkımda" : "About"}
-              </span>
-            </div>
-      
+              {language === "tr" ? "Hakkımda" : "About"}
+            </span>
+          </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             <span className="text-gray-900">
               {firstWord} {remainingWords}
-            </span>{" "}
+            </span>
           </h1>
 
           <p className="text-xl text-gray-600">{aboutContent.subtitle}</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
- 
+        <div className="grid lg:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="space-y-8"
           >
-          
             <div className="bg-gray-50 rounded-2xl p-6">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 bg-primary-600 rounded-xl flex items-center justify-center">
@@ -177,7 +239,6 @@ const About = () => {
               </div>
             </div>
 
-          
             <div className="bg-white rounded-2xl p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <GraduationCap className="w-5 h-5 text-primary-600" />
@@ -205,9 +266,46 @@ const About = () => {
             </div>
           </motion.div>
 
-         
           <div className="space-y-8">
-         
+            <div className="bg-primary-50 rounded-2xl p-6 border border-primary-100">
+              <div className="flex items-center gap-3 mb-6">
+                <Activity className="w-5 h-5 text-primary-600" />
+                <h2 className="text-xl font-bold text-gray-900">
+                  {language === "tr" ? "Klinik İlgi Alanları" : "Clinical Areas of Interest"}
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {clinicalInterests.map((interest, index) => {
+                  const Icon = interest.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.05 }}
+                      className="bg-white rounded-xl p-4 border border-gray-200 hover:border-primary-200 hover:shadow-sm transition-all"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-5 h-5 text-primary-600" />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-gray-900 text-sm mb-1">
+                            {interest.title}
+                          </h3>
+                          <p className="text-gray-600 text-xs">
+                            {interest.description}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="flex flex-wrap gap-2 mb-6">
               {sections.map((section, index) => {
                 const Icon = section.icon;
@@ -242,10 +340,9 @@ const About = () => {
               })}
             </div>
 
-          
-            <div className="bg-primary-50 rounded-2xl p-6 border border-primary-100">
+            <div className="bg-white rounded-2xl p-6 border border-gray-200">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center flex-shrink-0">
                   {React.createElement(sections[activeSection]?.icon || Heart, {
                     className: "w-6 h-6 text-white",
                   })}
@@ -270,7 +367,6 @@ const About = () => {
               </div>
             </div>
 
-       
             <div className="bg-white rounded-2xl p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
                 <Users className="w-5 h-5 text-primary-600" />
