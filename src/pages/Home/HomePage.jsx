@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CareApproach from '@/pages/Home/components/CareApproach.jsx';
+import CareApproach from '@/pages/Home/Components/CareApproach.jsx';
 import Services from '@/pages/Home/components/Services.jsx';
 import Hero from '@pages/Home/components/Hero.jsx';
 
