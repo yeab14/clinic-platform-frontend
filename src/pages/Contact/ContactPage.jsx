@@ -4,7 +4,9 @@ import {
   AnimatePresence,
   motion,
 } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import {
+  Loader2,
   CheckCircle,
   Clock,
   Mail,
@@ -28,26 +30,42 @@ const ContactPage = () => {
     subject: '',
     message: '',
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+ const [status, setStatus] = useState('idle'); // Options: 'idle', 'sending', 'success', 'error'
 
   const hospitalAddress = "Çavuşoğlu, Sanayi Cd. No:1, 34873 Kartal/İstanbul";
   const encodedAddress = encodeURIComponent(hospitalAddress);
   const googleMapsEmbedUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.478278858471!2d29.180827315412032!3d40.90831797931219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac9c6bcdd6b3d%3A0x5e3c5c2c8c8c8c8c!2s${encodedAddress}!5e0!3m2!1sen!2str!4v1641234567890!5m2!1sen!2str`;
   const googleMapsUrl = `https://maps.google.com/?q=${encodedAddress}`;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setTimeout(() => {
-      setIsSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-      });
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1000);
+    setStatus('sending');
+
+    const templateParams = {
+      patient_name: formData.name,
+      patient_email: formData.email,
+      patient_phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+      to_email: 'info@redwanbusery.com',
+    };
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      setStatus('success');
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 10000);
+    } catch (error) {
+      console.error('FAILED...', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   const handleChange = (e) => {
@@ -97,149 +115,153 @@ const ContactPage = () => {
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
               <div className="p-6">
             
-                <AnimatePresence>
-                  {isSubmitted && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="mb-6 overflow-hidden"
-                    >
-                      <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                        <div className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                          <div>
-                            <h3 className="font-bold text-gray-900 mb-1">
-                              {language === 'tr' ? 'Mesajınız Gönderildi' : 'Message Sent'}
-                            </h3>
-                            <p className="text-gray-600 text-sm">
-                              {language === 'tr'
-                                ? 'Mesajınızı aldım. Size 24 saat içinde dönüş yapacağım. Acil durumlar için lütfen WhatsApp kullanın.'
-                                : 'I have received your message. I will get back to you within 24 hours. For urgent matters, please use WhatsApp.'
-                              }
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {status === 'success' ? (
+  <motion.div 
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    className="text-center py-12 px-6"
+  >
+    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+      <CheckCircle className="w-10 h-10 text-green-600" />
+    </div>
+    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+      {language === 'tr' ? 'Teşekkür Ederiz' : 'Thank You'}
+    </h3>
+    <p className="text-gray-600 mb-6">
+      {language === 'tr' 
+        ? 'Mesajınız iletildi. E-posta onayını bekliyoruz. 24 saat içinde dönüş yapılacaktır.' 
+        : 'Thank you. We are waiting for email confirmation. A response will be provided within 24 hours.'}
+    </p>
+    <button 
+      onClick={() => setStatus('idle')}
+      className="text-blue-600 font-medium hover:underline"
+    >
+      {language === 'tr' ? 'Yeni bir mesaj gönder' : 'Send another message'}
+    </button>
+  </motion.div>
+) : (
+  /* The Form - Visible when status is 'idle', 'sending', or 'error' */
+  <form onSubmit={handleSubmit} className="space-y-6">
+    <div className="grid md:grid-cols-2 gap-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          {language === 'tr' ? 'Ad Soyad *' : 'Full Name *'}
+        </label>
+        <div className="relative">
+          <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <input
+            type="text"
+            name="name"
+            required
+            className="w-full pl-10 pr-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+            placeholder={language === 'tr' ? 'Adınız Soyadınız' : 'Your name'}
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
 
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <Send className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h2 className="text-xl font-bold text-gray-900">
-                      {language === 'tr' ? 'Mesaj Gönder' : 'Send Message'}
-                    </h2>
-                    <p className="text-gray-600 text-sm">
-                      {language === 'tr' ? '24 saat içinde dönüş' : 'Response within 24 hours'}
-                    </p>
-                  </div>
-                </div>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {language === 'tr' ? 'Ad Soyad *' : 'Full Name *'}
-                      </label>
-                      <div className="relative">
-                        <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <input
-                          type="text"
-                          name="name"
-                          required
-                          className="w-full pl-10 pr-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
-                          placeholder={language === 'tr' ? 'Adınız Soyadınız' : 'Your name'}
-                          value={formData.name}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {language === 'tr' ? 'E-posta *' : 'Email *'}
-                      </label>
-                      <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <input
-                          type="email"
-                          name="email"
-                          required
-                          className="w-full pl-10 pr-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
-                          placeholder={language === 'tr' ? 'email@example.com' : 'email@example.com'}
-                          value={formData.email}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {language === 'tr' ? 'Telefon' : 'Phone'}
-                      </label>
-                      <div className="relative">
-                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <input
-                          type="tel"
-                          name="phone"
-                          className="w-full pl-10 pr-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
-                          placeholder={language === 'tr' ? '+90 (5__) ___-____' : '+90 (5__) ___-____'}
-                          value={formData.phone}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {language === 'tr' ? 'Konu *' : 'Subject *'}
-                      </label>
-                      <input
-                        type="text"
-                        name="subject"
-                        required
-                        className="w-full px-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
-                        placeholder={language === 'tr' ? 'Mesajınızın konusu' : 'Message subject'}
-                        value={formData.subject}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          {language === 'tr' ? 'E-posta *' : 'Email *'}
+        </label>
+        <div className="relative">
+          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <input
+            type="email"
+            name="email"
+            required
+            className="w-full pl-10 pr-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+            placeholder="email@example.com"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {language === 'tr' ? 'Mesaj *' : 'Message *'}
-                    </label>
-                    <textarea
-                      name="message"
-                      required
-                      rows="5"
-                      className="w-full px-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none resize-none"
-                      placeholder={language === 'tr' ? 'Mesajınızı buraya yazın...' : 'Write your message here...'}
-                      value={formData.message}
-                      onChange={handleChange}
-                    />
-                  </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          {language === 'tr' ? 'Telefon' : 'Phone'}
+        </label>
+        <div className="relative">
+          <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <input
+            type="tel"
+            name="phone"
+            className="w-full pl-10 pr-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+            placeholder="+90 (5__) ___-____"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 items-center justify-between pt-6 border-t border-gray-200">
-                    <div className="text-sm text-gray-600 flex items-center gap-2">
-                      <Shield className="w-4 h-4 text-blue-500" />
-                      <span>{language === 'tr' ? 'Güvenli ve şifreli' : 'Secure and encrypted'}</span>
-                    </div>
-                    
-                    <button
-                      type="submit"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      <Send className="w-5 h-5" />
-                      <span>{language === 'tr' ? 'Mesajı Gönder' : 'Send Message'}</span>
-                    </button>
-                  </div>
-                </form>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          {language === 'tr' ? 'Konu *' : 'Subject *'}
+        </label>
+        <input
+          type="text"
+          name="subject"
+          required
+          className="w-full px-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+          placeholder={language === 'tr' ? 'Mesajınızın konusu' : 'Message subject'}
+          value={formData.subject}
+          onChange={handleChange}
+        />
+      </div>
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-2">
+        {language === 'tr' ? 'Mesaj *' : 'Message *'}
+      </label>
+      <textarea
+        name="message"
+        required
+        rows="5"
+        className="w-full px-4 py-3 bg-white rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none resize-none"
+        placeholder={language === 'tr' ? 'Mesajınızı buraya yazın...' : 'Write your message here...'}
+        value={formData.message}
+        onChange={handleChange}
+      />
+    </div>
+
+    {/* Status Message for Errors */}
+    {status === 'error' && (
+      <div className="text-red-600 text-sm font-medium">
+        {language === 'tr' 
+          ? 'Bir hata oluştu. Lütfen tekrar deneyin veya WhatsApp üzerinden iletişime geçin.' 
+          : 'An error occurred. Please try again or contact via WhatsApp.'}
+      </div>
+    )}
+
+    <div className="flex flex-col sm:flex-row gap-4 items-center justify-between pt-6 border-t border-gray-200">
+      <div className="text-sm text-gray-600 flex items-center gap-2">
+        <Shield className="w-4 h-4 text-blue-500" />
+        <span>{language === 'tr' ? 'Güvenli ve şifreli' : 'Secure and encrypted'}</span>
+      </div>
+
+      <button
+        type="submit"
+        disabled={status === 'sending'}
+        className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+      >
+        {status === 'sending' ? (
+          <>
+            <Loader2 className="w-5 h-5 animate-spin" />
+            <span>{language === 'tr' ? 'Gönderiliyor...' : 'Sending...'}</span>
+          </>
+        ) : (
+          <>
+            <Send className="w-5 h-5" />
+            <span>{language === 'tr' ? 'Mesajı Gönder' : 'Send Message'}</span>
+          </>
+        )}
+      </button>
+    </div>
+  </form>
+)}
               </div>
             </div>
           </div>
