@@ -11,12 +11,10 @@ import {
   Calendar,
   ChevronRight,
   Clock,
-  Heart,
   MapPin,
   Menu,
   MessageCircle,
   Shield,
-  Stethoscope,
   X,
 } from 'lucide-react';
 import {
@@ -142,13 +140,14 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
             <Link to="/" className="flex items-center gap-3 sm:gap-4 group">
             <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <Heart className="w-8 h-8 text-white" />
-                </div>
-                <div className="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full border-2 border-primary-100 flex items-center justify-center">
-                  <Stethoscope className="w-3 h-3 text-primary-600" />
-                </div>
-              </div>
+
+    <img 
+      src="/favicon.png" 
+      alt="Logo"
+      className="w-[7rem] h-[7rem]"
+    />
+ 
+</div>
 
               <div className="relative">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">

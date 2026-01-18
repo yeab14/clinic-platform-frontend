@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import {
   ArrowUp,
   Clock,
-  Heart,
   Linkedin,
   Mail,
   MapPin,
@@ -25,14 +24,18 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-slate-900 to-slate-950 border-t border-blue-800 text-white">
-      <div className="container-custom px-4 py-12">
+    <footer className="bg-gradient-to-b from-slate-900 to-slate-950 border-t border-blue-800 text-white mt-auto">
+      <div className="container-custom px-4 py-12 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           
           <div>
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
-                <Heart className="w-7 h-7 text-white" />
+            <div className="flex items-center gap-4 mb-6">  
+              <div className="relative flex-shrink-0">  
+                <img 
+                  src="/favicon.png"  
+                  alt="Logo"
+                  className="w-[7rem] h-[7rem] object-contain"
+                />
               </div>
               <div>
                 <h2 className="text-xl font-bold text-white mb-2">
@@ -43,6 +46,7 @@ const Footer = () => {
                 </p>
               </div>
             </div>
+
             <p className="text-blue-200 text-sm mb-4">
               {language === 'tr' 
                 ? 'Güncel bilimsel veriler ve uluslararası kılavuzlar doğrultusunda kardiyoloji hizmeti.'
@@ -163,7 +167,6 @@ const Footer = () => {
               >
                 {language === 'tr' ? 'Şartlar' : 'Terms'}
               </Link>
-
             </div>
           </div>
         </div>
